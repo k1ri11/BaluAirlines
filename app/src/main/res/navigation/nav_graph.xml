@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/searchTicketFragment">
+    <fragment
+        android:id="@+id/searchTicketFragment"
+        android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchTicketFragment"
+        android:label="fragment_search_tickets"
+        tools:layout="@layout/fragment_search_tickets" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.company.baluairlines.favorite_feature.presentation.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <navigation android:id="@+id/servicesNavigation"
+        app:startDestination="@id/servicesFragment">
+        <fragment
+            android:id="@+id/servicesFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.ServicesFragment"
+            android:label="fragment_services"
+            tools:layout="@layout/fragment_services" >
+            <action
+                android:id="@+id/action_servicesFragment_to_flightStatusFragment"
+                app:destination="@id/flightStatusFragment" />
+            <action
+                android:id="@+id/action_servicesFragment_to_flightTableFragment"
+                app:destination="@id/flightTableFragment" />
+            <action
+                android:id="@+id/action_servicesFragment_to_registrationFragment"
+                app:destination="@id/registrationFragment" />
+            <action
+                android:id="@+id/action_servicesFragment_to_bookingStatusFragment"
+                app:destination="@id/bookingStatusFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/flightStatusFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.FlighStatusFragment"
+            android:label="fragment_flight_board"
+            tools:layout="@layout/fragment_flight_status" >
+            <action
+                android:id="@+id/action_flightStatusFragment_to_flightStatusListFragment"
+                app:destination="@id/flightStatusListFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/flightTableFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.FlightTableFragment"
+            android:label="fragment_flight_table"
+            tools:layout="@layout/fragment_flight_table" >
+            <action
+                android:id="@+id/action_flightTableFragment_to_flightStatusListFragment"
+                app:destination="@id/flightStatusListFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/bookingStatusFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.BookingStatusFragment"
+            android:label="fragment_booking_status"
+            tools:layout="@layout/fragment_booking_status" />
+        <fragment
+            android:id="@+id/registrationFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.RegistrationFragment"
+            android:label="fragment_registration"
+            tools:layout="@layout/fragment_registration" />
+        <fragment
+            android:id="@+id/flightStatusListFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.FlightStatusListFragment"
+            android:label="fragment_flight_status_list"
+            tools:layout="@layout/fragment_flight_status_list" />
+    </navigation>
+
+
+</navigation>

@@ -1,0 +1,94 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary_dark"
+    android:orientation="vertical"
+    tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.RegistrationFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/airplane"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/arrow_back_icon"
+        app:theme="@style/ThemeOverlay.AppCompat" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/registration"
+        android:textColor="@color/bold_text_color_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/rounded_full_card"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/surname_edit_text"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/divider_color_dark"
+            android:hint="@string/surname_hint"
+            android:inputType="text"
+            android:ellipsize="end"
+            android:textColor="@color/bold_text_color_dark"
+            android:textColorHint="@color/text_color_dark" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/booking_number_edit_text"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/divider_color_dark"
+            android:hint="@string/booking_number_hint"
+            android:inputType="textNoSuggestions"
+            android:textColor="@color/bold_text_color_dark"
+            android:textColorHint="@color/text_color_dark" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_button"
+            android:layout_marginBottom="8dp"
+            android:text="@string/search_booking_button"
+            android:textAllCaps="false"
+            android:textColor="@color/background_secondary_dark" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

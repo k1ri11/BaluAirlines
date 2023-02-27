@@ -1,0 +1,141 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary_dark"
+    android:orientation="vertical"
+    tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.ServicesFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_secondary_dark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/services"
+        app:titleTextColor="@color/bold_text_color_dark" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bottom_card"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/flight_table_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/flight_table_image_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/flight_table_text"
+                style="@style/TextAppearance.LargeBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/flight_table"
+                android:textColor="@color/bold_text_color_dark" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/registration_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/registration_image_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/registration_text"
+                style="@style/TextAppearance.LargeBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/registration"
+                android:textColor="@color/bold_text_color_dark" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/booking_status_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/booking_status_image_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/booking_status_text"
+                style="@style/TextAppearance.LargeBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/search_booking"
+                android:textColor="@color/bold_text_color_dark" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/flight_status_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/flight_status_image_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/flight_status_text"
+                style="@style/TextAppearance.LargeBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/flight_status"
+                android:textColor="@color/bold_text_color_dark" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</LinearLayout>

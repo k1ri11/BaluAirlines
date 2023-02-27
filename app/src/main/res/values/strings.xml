@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">BaluAirlines</string>
+
+    <string name="incorrect_request">Неправильно сформирован запрос</string>
+    <string name="incorrect_authorization">Неверная авторизация</string>
+    <string name="element_not_found">Такой элемент не найден на сервере</string>
+    <string name="server_error">Неопознанная ошибка сервера</string>
+    <string name="no_internet_connection">Нет интернет соединения</string>
+
+    <string name="departure_arrival_airports">%1$s - %2$s</string>
+
+    <string name="dep_arr_date_and_passengers">%1$d %2$s - %3$d %4$s | %5$d взрослый</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="main">Главная</string>
+    <string name="search">Поиск</string>
+    <string name="favorite">Избранное</string>
+    <string name="services">Сервисы</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="flight_table">Табло рейсов</string>
+    <string name="registration">Регистрация на рейс</string>
+    <string name="search_booking">Поиск брони</string>
+    <string name="flight_status">Статус рейса</string>
+
+            <!--    hints       -->
+    <string name="departure_hint">Откуда (обязательно)</string>
+    <string name="departure_date_hint">Дата вылета</string>
+    <string name="surname_hint">Введите фамилию пассажира</string>
+    <string name="booking_number_hint">Введите номер брони/билета</string>
+
+
+
+            <!--    buttons     -->
+    <string name="search_button">Найти</string>
+    <string name="search_booking_button">Найти бронирование</string>
+</resources>
