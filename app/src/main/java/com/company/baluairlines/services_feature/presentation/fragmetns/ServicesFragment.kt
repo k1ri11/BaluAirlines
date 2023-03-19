@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.company.baluairlines.core.MainActivity
 import com.company.baluairlines.core.utils.Resource
 import com.company.baluairlines.services_feature.domain.ServicesRepositoryImpl
@@ -29,33 +30,12 @@ class ServicesFragment : Fragment(), MenuProvider {
     ): View {
         _binding = FragmentServicesBinding.inflate(inflater, container, false)
 
-        val appcomp = (requireActivity() as MainActivity).appComponent
-        val viewmodel: StatusViewModel = StatusViewModel(
-            ServicesRepositoryImpl(
-                api = appcomp.api,
-                context = requireContext(),
-                networkUtils = appcomp.networkUtils
-            )
-        )
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            viewmodel.flightStatusWithNumber("PG0404", Calendar.getInstance().timeInMillis)
-//            viewmodel.flightStatus.observe(viewLifecycleOwner) {
-//                if (it is Resource.Success) {
-//                    Log.d("fffff", "onCreateView: ${it.data?.status} ")
-//                }
-//                if (it is Resource.Error) {
-//                    Log.d("fffff", "onCreateView: ${it.message} ")
-//                }
-//            }
-//
-//        }
-
-        setupnavigation(binding)
+        setupNavigation()
 
         return binding.root
     }
 
-    private fun setupnavigation(binding: FragmentServicesBinding) {
+    private fun setupNavigation() {
         binding.apply {
             flightTableContainer.setOnClickListener {
                 findNavController().navigate(R.id.action_servicesFragment_to_flightTableFragment)

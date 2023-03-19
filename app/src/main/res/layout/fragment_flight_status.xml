@@ -1,21 +1,173 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background_primary_dark"
     tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.FlighStatusFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/flight_table"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background_secondary_dark"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Статус рейса"
-        app:titleTextColor="@color/bold_text_color_dark" />
+        app:navigationIcon="@drawable/arrow_back_icon"
+        app:theme="@style/ThemeOverlay.AppCompat" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/flight_status"
+        android:textColor="@color/bold_text_color_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/rounded_full_card"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
+
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggle_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_full_primary"
+            android:paddingHorizontal="4dp"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/flight_number_button"
+                style="@style/TextAppearance.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:insetRight="4dp"
+                android:text="@string/flight_number_button"
+                android:textAllCaps="false"
+                android:textColor="@color/bold_text_color_dark"
+                app:backgroundTint="@color/background_fill_dark"
+                app:cornerRadius="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/route_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="0.5"
+                android:text="@string/route_button"
+                android:textAllCaps="false"
+                android:textColor="@color/bold_text_color_dark"
+                app:backgroundTint="@color/background_primary_dark"
+                app:cornerRadius="8dp" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/departure_edit_text"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/divider_color_dark"
+            android:hint="@string/departure_hint"
+            android:inputType="textCapCharacters"
+            android:textColor="@color/bold_text_color_dark"
+            android:textColorHint="@color/text_color_dark"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/swap_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginTop="-36dp"
+            android:src="@drawable/swap_vert"
+            android:background="@drawable/round_button"
+            app:tint="@color/accent"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/arrival_edit_text"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/divider_color_dark"
+            android:hint="@string/arrival_hint"
+            android:inputType="textCapCharacters"
+            android:textColor="@color/bold_text_color_dark"
+            android:textColorHint="@color/text_color_dark"
+            android:visibility="gone" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/flight_number_edit_text"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/divider_color_dark"
+            android:hint="@string/flight_number_hint"
+            android:inputType="textCapCharacters"
+            android:textColor="@color/bold_text_color_dark"
+            android:textColorHint="@color/text_color_dark" />
+
+
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/date_edit_text"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/divider_color_dark"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:hint="@string/departure_date_hint"
+            android:inputType="none"
+            android:textColor="@color/bold_text_color_dark"
+            android:textColorHint="@color/text_color_dark" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/find_button"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/search_button"
+            android:textAllCaps="false"
+            android:textColor="@color/background_secondary_dark" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

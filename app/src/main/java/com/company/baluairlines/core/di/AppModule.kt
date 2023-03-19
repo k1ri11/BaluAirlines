@@ -7,7 +7,6 @@ import com.company.baluairlines.core.data.database.AirDao
 import com.company.baluairlines.core.data.database.AirDatabase
 import com.company.baluairlines.core.utils.NetworkUtils
 import com.company.baluairlines.core.utils.NetworkUtilsImpl
-//import com.company.baluairlines.data.models.YourDeserializer
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -16,7 +15,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-@ApplicationScope
 @Module
 class AppModule {
 

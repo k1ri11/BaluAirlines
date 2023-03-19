@@ -20,6 +20,9 @@ class RegistrationFragment : Fragment() {
     ): View {
         _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
 
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
 
         return binding.root
     }

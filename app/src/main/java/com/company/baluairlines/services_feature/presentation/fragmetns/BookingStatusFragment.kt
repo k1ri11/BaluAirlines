@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentBookingStatusBinding
 import com.company.myapplication.databinding.FragmentRegistrationBinding
@@ -20,7 +21,9 @@ class BookingStatusFragment : Fragment() {
     ): View {
         _binding = FragmentBookingStatusBinding.inflate(inflater, container, false)
 
-
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
 
         return binding.root
     }

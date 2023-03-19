@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.BaluAirlines" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <!--todo разобраться с темой и цветами как туда прокидывать-->
+        <!--todo разобраться с темой и цветами -->
 
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

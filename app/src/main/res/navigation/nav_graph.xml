@@ -49,14 +49,18 @@
             android:label="fragment_flight_table"
             tools:layout="@layout/fragment_flight_table" >
             <action
-                android:id="@+id/action_flightTableFragment_to_flightStatusListFragment"
+                android:id="@+id/flightTableFr_to_flightStatusListFr"
                 app:destination="@id/flightStatusListFragment" />
         </fragment>
         <fragment
             android:id="@+id/bookingStatusFragment"
             android:name="com.company.baluairlines.services_feature.presentation.fragmetns.BookingStatusFragment"
             android:label="fragment_booking_status"
-            tools:layout="@layout/fragment_booking_status" />
+            tools:layout="@layout/fragment_booking_status" >
+            <action
+                android:id="@+id/action_bookingStatusFragment_to_flightStatusListFragment"
+                app:destination="@id/flightStatusListFragment" />
+        </fragment>
         <fragment
             android:id="@+id/registrationFragment"
             android:name="com.company.baluairlines.services_feature.presentation.fragmetns.RegistrationFragment"
@@ -64,9 +68,29 @@
             tools:layout="@layout/fragment_registration" />
         <fragment
             android:id="@+id/flightStatusListFragment"
-            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.FlightStatusListFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.ServicesFlightListFragment"
             android:label="fragment_flight_status_list"
-            tools:layout="@layout/fragment_flight_status_list" />
+            tools:layout="@layout/fragment_services_flight_list" >
+            <argument
+                android:name="flightNumber"
+                app:argType="string"
+                android:defaultValue="" />
+            <argument
+                android:name="departureAirport"
+                app:argType="string"
+                android:defaultValue="" />
+            <argument
+                android:name="arrivalAirport"
+                app:argType="string"
+                android:defaultValue="" />
+            <argument
+                android:name="bookingNumber"
+                app:argType="string"
+                android:defaultValue="" />
+            <argument android:name="departureDate"
+                app:argType="string"
+                android:defaultValue="" />
+        </fragment>
     </navigation>
 
 

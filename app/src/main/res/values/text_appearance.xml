@@ -35,4 +35,9 @@
     <style name="TextAppearance.Description" parent="TextAppearance.Regular">
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="TextAppearance.Airports" parent="TextAppearance.Regular">
+        <item name="android:textSize">36sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
 </resources>

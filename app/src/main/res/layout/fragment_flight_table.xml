@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_primary_dark"
-    android:orientation="vertical"
     tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.FlightTableFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -55,12 +54,12 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/departure_edit_text"
             style="@style/TextAppearance.LargeBody"
-            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:backgroundTint="@color/divider_color_dark"
             android:hint="@string/departure_hint"
+            android:inputType="textCapCharacters"
             android:textColor="@color/bold_text_color_dark"
             android:textColorHint="@color/text_color_dark" />
 
@@ -71,12 +70,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:backgroundTint="@color/divider_color_dark"
+            android:cursorVisible="false"
+            android:focusable="false"
             android:hint="@string/departure_date_hint"
-            android:inputType="date"
             android:textColor="@color/bold_text_color_dark"
             android:textColorHint="@color/text_color_dark" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/find_button"
             style="@style/TextAppearance.LargeBody"
             android:layout_width="match_parent"
             android:layout_height="48dp"

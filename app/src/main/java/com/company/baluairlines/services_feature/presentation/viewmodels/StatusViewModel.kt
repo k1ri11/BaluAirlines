@@ -5,19 +5,22 @@ import androidx.lifecycle.ViewModel
 import com.company.baluairlines.core.domain.FlightInfo
 import com.company.baluairlines.core.utils.Resource
 import com.company.baluairlines.services_feature.data.ServicesRepository
-import javax.inject.Inject
 
 class StatusViewModel (
     private val servicesRepository: ServicesRepository
 ): ViewModel(){
 
-    val flightStatus: LiveData<Resource<FlightInfo>> = servicesRepository.flightStatus
+    val flightStatus: LiveData<Resource<List<FlightInfo>>> = servicesRepository.flightStatus
 
-    suspend fun flightStatusWithNumber(flightNumber: String, date: Long){
-        servicesRepository.flightStatusWithNumber(flightNumber, date)
+    suspend fun getFlightStatusWithNumber(flightNumber: String, date: Long){
+        servicesRepository.getFlightStatusWithNumber(flightNumber.uppercase(), date)
     }
 
-    suspend fun flightStatusWithAirports(){
-        servicesRepository.flightStatusWithAirports()
+    suspend fun getFlightStatusWithAirports(departureAirport: String, arrivalAirport: String, date: Long){
+        servicesRepository.getFlightStatusWithAirports(departureAirport.uppercase(), arrivalAirport.uppercase(), date)
+    }
+
+    suspend fun getFlightTable(departureAirport: String, date: Long){
+        servicesRepository.getFlightTable(departureAirport.uppercase(), date)
     }
 }

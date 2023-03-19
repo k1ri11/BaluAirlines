@@ -12,9 +12,17 @@ interface AirApi {
     @GET("/flights?departure_date=2017-05-01 12%3a25%3a00%2b03&max_transits=3")
     suspend fun getFlights(): Response<ArrayList<FlightReq>>
 
-    @GET("/flights/no/PG0404?date=2023-02-23T21%3A12%3A09.929578")
-
-    suspend fun flightStatusWithAirports(): Response<FlightInfoReq>
+    @GET("/flights/path/{departure_airport}/{arrival_airport}")
+    suspend fun flightStatusWithAirports(
+        @Path("departure_airport") departureAirport: String,
+        @Path("arrival_airport") arrivalAirport: String,
+        @Query("date") date: Long
+    ): Response<FlightInfoReq>
+    @GET("/flights/table/{departure_airport}")
+    suspend fun getFlightTable(
+        @Path("departure_airport") departureAirport: String,
+        @Query("departure_date") date: Long
+    ): Response<List<FlightInfoReq>>
 
 
     @GET("/flights/no/{flight_number}?")

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
 }
 
@@ -70,7 +71,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$cor_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$cor_version"
 
-    def life_version = "2.5.1"
+    def life_version = "2.6.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$life_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$life_version"
