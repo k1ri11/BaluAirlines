@@ -1,20 +1,20 @@
 package com.company.baluairlines.buy_ticket_feature.domain
 
 import android.content.Context
-import com.company.baluairlines.buy_ticket_feature.data.Repository
+import com.company.baluairlines.buy_ticket_feature.data.BuyTicketRepository
 import com.company.baluairlines.core.data.AirApi
 import com.company.baluairlines.core.data.mappers.toFlight
-import com.company.baluairlines.core.utils.Resource
 import com.company.baluairlines.core.di.ApplicationScope
 import com.company.baluairlines.core.domain.Flight
+import com.company.baluairlines.core.utils.Resource
 import com.company.myapplication.R
 import javax.inject.Inject
 
 @ApplicationScope
-class RepositoryImpl @Inject constructor(
+class BuyTicketRepositoryImpl @Inject constructor(
     private val api: AirApi,
     private val context: Context
-): Repository {
+): BuyTicketRepository {
     override suspend fun getFlights(): Resource<List<Flight>> {
         val response = api.getFlights()
         if (response.isSuccessful){

@@ -9,14 +9,29 @@ import javax.inject.Scope
 
 @ServicesFlightViewScope
 @Subcomponent
+/**
+ * Компонент привязанный к жизненному циклу view фрагмента
+ * @property root binding класс с элементами пользовательского интерфейса
+ * @property viewLifecycleOwner хранит изменения жизненного цикла
+ * @property servicesFlightListController содержит всю логику управления пользовательским интерфейсом фрагмента
+ * */
 interface ServicesFlightViewComponent {
     val root: FragmentServicesFlightListBinding
     val viewLifecycleOwner: LifecycleOwner
     val servicesFlightListController: ServicesFlightListController
 
 
+    /**
+     * фабрика для создания компонента
+     */
     @Subcomponent.Factory
     interface Factory {
+        /**
+         * метод создания компонента
+         * @param root binding класс с элементами пользовательского интерфейса
+         * @param viewLifecycleOwner хранит изменения жизненного цикла
+         * @return Компонент привязанный к жизненному циклу view фрагмента
+         */
         fun create(
             @BindsInstance root: FragmentServicesFlightListBinding,
             @BindsInstance viewLifecycleOwner: LifecycleOwner,
@@ -25,7 +40,9 @@ interface ServicesFlightViewComponent {
 }
 
 
-
+/**
+ * скоуп жизненного цикла view фрагмента
+ */
 @Scope
 annotation class ServicesFlightViewScope
 

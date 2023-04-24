@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.dokka'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
 }
@@ -76,8 +77,20 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$life_version"
 
+    implementation "org.jetbrains.dokka:android-documentation-plugin:1.7.20"
+
     testImplementation 'junit:junit:4.13.2'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+dokkaHtml.configure {
+    dokkaSourceSets {
+        named("main") {
+            suppressInheritedMembers.set(true)
+            noAndroidSdkLink.set(false)
+            includeNonPublic.set(true)
+        }
+    }
 }

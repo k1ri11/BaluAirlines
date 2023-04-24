@@ -1,6 +1,7 @@
 package com.company.baluairlines.core.di
 
 import android.content.Context
+import com.company.baluairlines.buy_ticket_feature.di.BuyTicketComponent
 import com.company.baluairlines.core.ViewModelFactory
 import com.company.baluairlines.core.data.AirApi
 import com.company.baluairlines.core.data.database.AirDao
@@ -20,6 +21,7 @@ interface AppComponent {
     val networkUtils: NetworkUtils
     fun getViewModelFactory(): ViewModelFactory
     fun servicesFlightComponent(): ServicesFlightComponent.Factory
+    fun buyTicketComponent(): BuyTicketComponent.Factory
 
     @Component.Factory
     interface Factory {

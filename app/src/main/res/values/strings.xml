@@ -24,6 +24,8 @@
     <string name="flight_status">Статус рейса</string>
     <string name="departure">Отправление</string>
     <string name="arrival">Прибытие</string>
+    <string name="passenger_quantity">Количество пассажиров</string>
+    <string name="passenger_quantity_number">Количество пассажиров: %1$d</string>
 
             <!--    hints       -->
     <string name="departure_hint">Откуда (обязательно)</string>
@@ -32,6 +34,9 @@
     <string name="departure_date_hint">Дата вылета</string>
     <string name="surname_hint">Введите фамилию пассажира</string>
     <string name="booking_number_hint">Введите номер брони/билета</string>
+    <string name="back_hint">Обратно</string>
+
+
 
 
             <!--    buttons     -->
@@ -39,4 +44,13 @@
     <string name="search_booking_button">Найти бронирование</string>
     <string name="flight_number_button">Номер рейса</string>
     <string name="route_button">Маршрут</string>
+    <string name="economy">Эконом</string>
+    <string name="business">Бизнес</string>
+    <string name="adult">Взрослые</string>
+    <string name="adult_age">от 12 лет</string>
+    <string name="children">Дети</string>
+    <string name="children_descriptoin">от 0 до 12 лет</string>
+    <string name="baby_passenger">Младенцы</string>
+    <string name="baby_passenger_description">до 2 лет, без места \n на руках у взрослого</string>
+    <string name="save">Сохранить</string>
 </resources>

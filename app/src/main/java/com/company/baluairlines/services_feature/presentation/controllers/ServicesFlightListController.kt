@@ -33,7 +33,7 @@ class ServicesFlightListController @Inject constructor(
     var departureAirport = ""
     var arrivalAirport = ""
     var departureDate = ""
-    private val departureFormatter = SimpleDateFormat("dd.mm.yyyy", Locale.ROOT)
+    private val departureFormatter = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT)
     private val formatter = SimpleDateFormat("dd MMMM ", Locale.ROOT)
 
     fun setupViews(

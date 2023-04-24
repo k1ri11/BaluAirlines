@@ -11,6 +11,11 @@ import androidx.lifecycle.MutableLiveData
 import com.company.baluairlines.core.di.ApplicationScope
 import javax.inject.Inject
 
+/**
+ * Содержит методы для отслеживания состояния интернет соединения
+ * @property networkLiveData содержит статус текущего подключения
+ * @param context [Context]
+ */
 @ApplicationScope
 class NetworkUtilsImpl @Inject constructor(val context: Context) :
     ConnectivityManager.NetworkCallback(), NetworkUtils {
@@ -20,6 +25,10 @@ class NetworkUtilsImpl @Inject constructor(val context: Context) :
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
+    /**
+     * метод проверки текущего состояния интернет соединения
+     * @return присутствует ли соединение
+     */
     override fun hasInternetConnection(): Boolean {
         val activeNetwork = connectivityManager.activeNetwork ?: return false
         val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false

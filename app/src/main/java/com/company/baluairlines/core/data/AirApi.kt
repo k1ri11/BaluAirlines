@@ -16,7 +16,7 @@ interface AirApi {
     suspend fun flightStatusWithAirports(
         @Path("departure_airport") departureAirport: String,
         @Path("arrival_airport") arrivalAirport: String,
-        @Query("date") date: Long
+        @Query("departure_date") date: Long
     ): Response<FlightInfoReq>
     @GET("/flights/table/{departure_airport}")
     suspend fun getFlightTable(
@@ -28,7 +28,7 @@ interface AirApi {
     @GET("/flights/no/{flight_number}?")
     suspend fun flightStatusWithNumber(
         @Path("flight_number") flightNumber: String,
-        @Query("date") date: Long
+        @Query("departure_date") date: Long
     ): Response<FlightInfoReq>
 
 }

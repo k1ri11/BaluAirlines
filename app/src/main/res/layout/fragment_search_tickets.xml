@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_secondary_dark"
     android:orientation="vertical"
     tools:context="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchTicketFragment">
 
@@ -19,9 +20,238 @@
         app:title="@string/main"
         app:titleTextColor="@color/bold_text_color_dark" />
 
-    <ListView
-        android:id="@+id/list_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/full_rounded_with_borders"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/departure_edit_text"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_secondary_dark"
+            android:hint="@string/departure_hint"
+            android:inputType="textCapCharacters"
+            android:textColor="@color/bold_text_color_dark"
+            android:textColorHint="@color/text_color_dark"
+            app:layout_constraintEnd_toStartOf="@+id/departure_airport"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/arrival_edit_text"
+            app:layout_constraintEnd_toStartOf="@+id/swap_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/departure_edit_text" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/arrival_edit_text"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/background_secondary_dark"
+            android:hint="@string/arrival_hint"
+            android:inputType="textCapCharacters"
+            android:textColor="@color/bold_text_color_dark"
+            android:textColorHint="@color/text_color_dark"
+            app:layout_constraintEnd_toStartOf="@+id/arrival_airport"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/departure_edit_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/departure_airport"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VVO"
+            android:textColor="@color/text_color_dark"
+            app:layout_constraintBottom_toBottomOf="@+id/departure_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/departure_edit_text" />
+
+        <ImageButton
+            android:id="@+id/swap_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/background_secondary_dark"
+            android:src="@drawable/swap_vert"
+            app:layout_constraintBottom_toTopOf="@+id/arrival_airport"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/departure_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/departure_airport"
+            app:tint="@color/accent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/arrival_airport"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_dark"
+            app:layout_constraintBottom_toBottomOf="@+id/arrival_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/arrival_edit_text"
+            tools:text="SVO" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/full_rounded_with_borders"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:divider="@color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/departure_date"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:textColor="@color/bold_text_color_dark"
+            tools:text="27 февр, пн" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/calendar_icon"
+            app:tint="@color/accent" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:background="@color/divider_color_dark" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/back_date"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:text="@string/back_hint"
+            android:textColor="@color/bold_text_color_dark" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/back_calendar_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/calendar_icon"
+            app:tint="@color/accent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/back_remove_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/close_icon"
+            app:tint="@color/divider_color_dark"
+            android:visibility="gone"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/full_rounded_with_borders"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/passenger"
+            style="@style/TextAppearance.LargeBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bold_text_color_dark"
+            tools:text="1 пассажир" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/person_icon"
+            app:tint="@color/accent" />
+
+    </FrameLayout>
+
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggle_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_full_primary"
+        android:paddingHorizontal="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/economy_button"
+            style="@style/TextAppearance.Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:insetRight="4dp"
+            android:text="@string/economy"
+            android:textAllCaps="false"
+            android:textColor="@color/bold_text_color_dark"
+            app:backgroundTint="@color/background_fill_dark"
+            app:cornerRadius="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/business_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_weight="0.5"
+            android:text="@string/business"
+            android:textAllCaps="false"
+            android:textColor="@color/bold_text_color_dark"
+            app:backgroundTint="@color/background_primary_dark"
+            app:cornerRadius="8dp" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/find_button"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/search_button"
+        android:textAllCaps="false"
+        android:textColor="@color/background_secondary_dark" />
+
 
 </LinearLayout>
