@@ -9,9 +9,10 @@
     <string name="error">Ошибка: </string>
 
     <string name="departure_arrival_airports">%1$s - %2$s</string>
-
-    <string name="dep_arr_date_and_passengers">%1$d %2$s - %3$d %4$s | %5$d взрослый</string>
-
+    <string name="flight_cost">от %1$d ₽</string>
+    <string name="dep_arr_date_and_passengers">%1$s | пассажиров: %2$d</string>
+    <string name="destination_flight_date">%1$s %2$ </string>
+    <string name="passengers_cost">за %1$s пассажиров</string>
 
     <string name="main">Главная</string>
     <string name="search">Поиск</string>
@@ -27,7 +28,7 @@
     <string name="passenger_quantity">Количество пассажиров</string>
     <string name="passenger_quantity_number">Количество пассажиров: %1$d</string>
 
-            <!--    hints       -->
+    <!--    hints       -->
     <string name="departure_hint">Откуда (обязательно)</string>
     <string name="arrival_hint">Куда (обязательно)</string>
     <string name="flight_number_hint">Номер рейса (обязательно)</string>
@@ -37,9 +38,7 @@
     <string name="back_hint">Обратно</string>
 
 
-
-
-            <!--    buttons     -->
+    <!--    buttons     -->
     <string name="search_button">Найти</string>
     <string name="search_booking_button">Найти бронирование</string>
     <string name="flight_number_button">Номер рейса</string>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/full_rounded_with_borders"
+    android:padding="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="8dp"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/flight_date"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bold_text_color_dark"
+        tools:text="пн, 20 февраля"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/flight_cost"
+        style="@style/TextAppearance.BoldLargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:textColor="@color/bold_text_color_dark"
+        android:text="@string/flight_cost"
+        tools:text="от 46 165"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/passengers"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color_dark"
+        tools:text="за 1 пассaжира"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

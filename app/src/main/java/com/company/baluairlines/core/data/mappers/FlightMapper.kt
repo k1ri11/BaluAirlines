@@ -4,15 +4,23 @@ import com.company.baluairlines.core.data.model.FlightInfoReq
 import com.company.baluairlines.core.data.model.FlightReq
 import com.company.baluairlines.core.domain.Flight
 import com.company.baluairlines.core.domain.FlightInfo
+import com.company.baluairlines.core.domain.ServiceClass
 import java.text.SimpleDateFormat
 import java.util.*
 
+/** функция для маппинга из класса запроса (FlightInfoReq) в класс для UI (FlightInfo) */
 fun FlightInfoReq.toFlightInfo(): FlightInfo {
     val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ROOT)
+    val formatterHours = SimpleDateFormat("HH:mm", Locale.ROOT)
+    val scheduledArrivalDate = formatter.parse(scheduledArrival)!!
+    val scheduledDepartureDate = formatter.parse(scheduledDeparture)!!
+
     return FlightInfo(
         flightNo = flightNo,
-        scheduledArrival = formatter.parse(scheduledArrival)!!,
-        scheduledDeparture = formatter.parse(scheduledDeparture)!!,
+        scheduledArrival = scheduledArrivalDate,
+        scheduledArrivalTime = formatterHours.format(scheduledArrivalDate),
+        scheduledDeparture = scheduledDepartureDate,
+        scheduledDepartureTime = formatterHours.format(scheduledDepartureDate),
         arrivalAirport = arrivalAirport,
         departureAirport = departureAirport,
         status = status,
@@ -22,10 +30,17 @@ fun FlightInfoReq.toFlightInfo(): FlightInfo {
     )
 }
 
-
+/** функция для маппинга из класса запроса (FlightReq) в класс для UI (Flight) */
 fun FlightReq.toFlight(): Flight {
     return Flight(
-        cost = cost,
+        serviceClass = when (serviceClass) {
+            "Economy" -> ServiceClass.Economy
+//            "Comfort" -> ServiceClass.Comfort
+            "Business" -> ServiceClass.Business
+            else -> ServiceClass.Economy
+        },
+        passengers = passengers,
+        cost = cost.toInt(),
         time = time,
         flights = flights.map { it.toFlightInfo() },
     )

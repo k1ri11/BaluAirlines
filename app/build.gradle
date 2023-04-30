@@ -77,7 +77,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$life_version"
 
-    implementation "org.jetbrains.dokka:android-documentation-plugin:1.7.20"
+    implementation "org.jetbrains.dokka:android-documentation-plugin:1.8.10"
 
     testImplementation 'junit:junit:4.13.2'
 
@@ -86,10 +86,10 @@ dependencies {
 }
 
 dokkaHtml.configure {
+    moduleName.set("BaluAirlines")
+    suppressInheritedMembers.set(true)
     dokkaSourceSets {
         named("main") {
-            suppressInheritedMembers.set(true)
-            noAndroidSdkLink.set(false)
             includeNonPublic.set(true)
         }
     }

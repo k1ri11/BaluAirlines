@@ -8,7 +8,11 @@
         android:id="@+id/searchTicketFragment"
         android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchTicketFragment"
         android:label="fragment_search_tickets"
-        tools:layout="@layout/fragment_search_tickets" />
+        tools:layout="@layout/fragment_search_tickets" >
+        <action
+            android:id="@+id/searchTicketFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.company.baluairlines.favorite_feature.presentation.FavoriteFragment"
@@ -92,6 +96,27 @@
                 android:defaultValue="" />
         </fragment>
     </navigation>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchResultFragment"
+        android:label="fragment_search_result"
+        tools:layout="@layout/fragment_search_result" >
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="departureAirport"
+            app:argType="string" />
+        <argument android:name="arrivalAirport"
+            app:argType="string" />
+        <argument
+            android:name="serviceClass"
+            app:argType="string"
+            android:defaultValue="Economy" />
+        <argument
+            android:name="passengers"
+            app:argType="integer" />
+    </fragment>
 
 
 </navigation>

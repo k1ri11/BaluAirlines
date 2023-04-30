@@ -15,9 +15,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
+/** класс предоставляющий зависимости для даггера  */
 @Module
 class AppModule {
 
+    /** функция предоставляющая базу данных [AirDatabase]  */
     @ApplicationScope
     @Provides
     fun getToDoDatabase(context: Context): AirDatabase {
@@ -29,18 +31,21 @@ class AppModule {
         ).build()
     }
 
+    /** функция предоставляющая интерфейс взаимодействия с БД [AirDao]  */
     @ApplicationScope
     @Provides
     fun provideDao(db: AirDatabase): AirDao {
         return db.airDao()
     }
 
+    /** функция предоставляющая интерфейс информирующий о статусе интернет-соединения [NetworkUtils]  */
     @ApplicationScope
     @Provides
     fun provideNetworkUtils(context: Context): NetworkUtils {
         return NetworkUtilsImpl(context)
     }
 
+    /** функция предоставляющая клиента [OkHttpClient]  */
     @ApplicationScope
     @Provides
     fun provideClient(): OkHttpClient {
@@ -50,6 +55,7 @@ class AppModule {
             .build()
     }
 
+    /** функция предоставляющая интерфейс для выполения сетевых запросов [AirApi]  */
     @ApplicationScope
     @Provides
     fun provideAirApi(client: OkHttpClient): AirApi {

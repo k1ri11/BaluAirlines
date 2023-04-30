@@ -3,6 +3,18 @@ package com.company.baluairlines.core.data.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * класс содержащий информацию о перелете (класс запроса)
+ * @property flightNo номер рейса
+ * @property scheduledArrival запланированное время прилета
+ * @property scheduledDeparture запланированное время отправление
+ * @property arrivalAirport аэропорт прилета
+ * @property departureAirport аэропорт вылета
+ * @property status текущий статус рейса
+ * @property aircraftCode код модели самолета
+ * @property actualArrival фактическое время прилета
+ * @property actualDeparture фактическое время вылета
+ */
 data class FlightInfoReq(
     @SerializedName("flight_no")
     val flightNo: String,

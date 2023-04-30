@@ -1,16 +1,11 @@
-package com.company.baluairlines.services_feature.presentation.adapter
+package com.company.baluairlines.buy_ticket_feature.presentation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.company.baluairlines.core.domain.FlightInfo
+import com.company.baluairlines.core.domain.Flight
 
-/**
- * класс для расчета изменения между старым и новым листом
- * @param oldList старый лист с данными
- * @param newList новый лист с данными
- */
-class FlightDiffUtilCallback(
-    private var oldList: List<FlightInfo>,
-    private var newList: List<FlightInfo>,
+class FlightListDiffUtilCallback(
+    private var oldList: List<Flight>,
+    private var newList: List<Flight>,
 ) : DiffUtil.Callback() {
     /** функция для возвращения размера старого листа
      * @return размер листа
@@ -29,12 +24,12 @@ class FlightDiffUtilCallback(
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val oldItem = oldList[oldItemPosition]
         val newItem = newList[newItemPosition]
-        return oldItem.flightNo == newItem.flightNo
+        return oldItem.cost == newItem.cost && oldItem.time == newItem.time
     }
 
     /**
      * функция для определения одинаковые ли содержимое объекта
-     * @return одинаковое ли содержимое класса
+     * @return одинаковое ли содержимое объекта
      */
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val oldItem = oldList[oldItemPosition]

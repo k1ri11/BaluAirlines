@@ -13,7 +13,11 @@ import com.company.baluairlines.core.di.AppComponent
 import com.company.myapplication.R
 import com.company.myapplication.databinding.ActivityMainBinding
 
-
+/**
+ * класс главной активности приложения
+ * @property binding xml файл главной активности
+ * @property appComponent компонент приложения с основными зависимостями
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -32,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNav.setupWithNavController(navController)
     }
 
+    /**
+     * функция для скрытия клавиатуры когда происходит нажатие в другую область на экране
+     * @param event - нажатие пользователя
+     */
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
             val view: View? = currentFocus

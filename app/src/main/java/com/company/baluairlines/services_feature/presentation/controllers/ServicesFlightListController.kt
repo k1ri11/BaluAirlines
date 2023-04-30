@@ -4,7 +4,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.company.baluairlines.core.domain.FlightInfo
 import com.company.baluairlines.core.utils.Resource
@@ -13,8 +12,6 @@ import com.company.baluairlines.services_feature.presentation.adapter.ServicesFl
 import com.company.baluairlines.services_feature.presentation.viewmodels.StatusViewModel
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentServicesFlightListBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -55,7 +52,7 @@ class ServicesFlightListController @Inject constructor(
     }
 
     private fun setupObserver() {
-        viewModel.flightStatus.observe(viewLifecycleOwner){ response ->
+        viewModel.flightStatus.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Loading -> {
                     showProgressBar()
@@ -63,15 +60,17 @@ class ServicesFlightListController @Inject constructor(
                 is Resource.Success -> {
                     hideProgressBar()
                     val result = response.data!!
-                    adapter.FlightList = result
+                    adapter.flightList = result
                     setupAirports(result[0])
                 }
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Toast.makeText(fragment.requireContext(),
+                        Toast.makeText(
+                            fragment.requireContext(),
                             fragment.resources.getString(R.string.error).plus(message),
-                            Toast.LENGTH_LONG).show()
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
                 else -> {}
@@ -79,43 +78,38 @@ class ServicesFlightListController @Inject constructor(
         }
     }
 
-    private fun showProgressBar(){
+    private fun showProgressBar() {
         binding.prBar.visibility = View.VISIBLE
     }
 
-    private fun hideProgressBar(){
+    private fun hideProgressBar() {
         binding.prBar.visibility = View.GONE
     }
 
     private fun searchFlights() {
         if (flightNumber.isNotEmpty()) {
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                viewModel.getFlightStatusWithNumber(flightNumber, departureFormatter.parse(departureDate)!!.time)
-            }
+            viewModel.getFlightStatusWithNumber(
+                flightNumber,
+                departureFormatter.parse(departureDate)!!.time
+            )
             return
         }
         if (bookingNumber.isNotEmpty()) {
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 //                viewModel.flightStatusWithBookingNumber(bookingNumber, Calendar.getInstance().timeInMillis)
-            }
             return
         }
         if (arrivalAirport.isNotEmpty()) {
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                viewModel.getFlightStatusWithAirports(
-                    departureAirport = departureAirport,
-                    arrivalAirport = arrivalAirport,
-                    date = departureFormatter.parse(departureDate)!!.time
-                )
-            }
+            viewModel.getFlightStatusWithAirports(
+                departureAirport = departureAirport,
+                arrivalAirport = arrivalAirport,
+                date = departureFormatter.parse(departureDate)!!.time
+            )
             return
         } else {
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                viewModel.getFlightTable(
-                    departureAirport = departureAirport,
-                    date = departureFormatter.parse(departureDate)!!.time
-                )
-            }
+            viewModel.getFlightTable(
+                departureAirport = departureAirport,
+                date = departureFormatter.parse(departureDate)!!.time
+            )
         }
     }
 

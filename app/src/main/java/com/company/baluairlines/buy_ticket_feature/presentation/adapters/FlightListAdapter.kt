@@ -1,25 +1,23 @@
-package com.company.baluairlines.services_feature.presentation.adapter
+package com.company.baluairlines.buy_ticket_feature.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.company.baluairlines.core.domain.FlightInfo
-import com.company.baluairlines.services_feature.di.ServicesFlightFragmentScope
-import com.company.myapplication.databinding.ItemServicesFlightBinding
+import com.company.baluairlines.buy_ticket_feature.di.SearchResultFragmentScope
+import com.company.baluairlines.core.domain.Flight
+import com.company.myapplication.databinding.ItemFlightBinding
 import javax.inject.Inject
-
 
 /**
  * класс адаптера для recyclerView с полетами
  * @property flightList содержит элементы для ресайклера
  */
-@ServicesFlightFragmentScope
-class ServicesFlightAdapter @Inject constructor() : RecyclerView.Adapter<ServicesFlightAdapter.FlightViewHolder>() {
-
-    var flightList: List<FlightInfo> = emptyList()
+@SearchResultFragmentScope
+class FlightListAdapter @Inject constructor(): RecyclerView.Adapter<FlightListAdapter.FlightViewHolder>()  {
+    var flightList: List<Flight> = emptyList()
         set(newValue) {
-            val diffCallback = FlightDiffUtilCallback(field, newValue)
+            val diffCallback = FlightListDiffUtilCallback(field, newValue)
             val diffResult = DiffUtil.calculateDiff(diffCallback)
             field = newValue
             diffResult.dispatchUpdatesTo(this)
@@ -29,29 +27,30 @@ class ServicesFlightAdapter @Inject constructor() : RecyclerView.Adapter<Service
      * класс viewholder для каждого элемента ресайклера
      * @param binding xml разметка для элемента ресайклера
      */
-    inner class FlightViewHolder(private val binding: ItemServicesFlightBinding) :
+    inner class FlightViewHolder(private val binding: ItemFlightBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         /**
          * функция заполнения элемента ресайклера
          * @param currentItem текущий элемент
          */
-        fun bind(currentItem: FlightInfo) {
+        fun bind(currentItem: Flight) {
             binding.apply {
-                departureTime.text = currentItem.scheduledDepartureTime
-                arrivalTime.text = currentItem.scheduledArrivalTime
-                flightStatus.text = currentItem.status
-                flightNumber.text = currentItem.flightNo
+                departureTime.text = currentItem.flights.first().scheduledDepartureTime
+                arrivalTime.text = currentItem.flights.last().scheduledArrivalTime
+                //todo проверить как приходит время
+                flightTime.text = currentItem.time
+                flightCost.text = currentItem.cost.toString()
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlightViewHolder {
-        val binding = ItemServicesFlightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlightListAdapter.FlightViewHolder {
+        val binding = ItemFlightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FlightViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FlightViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FlightListAdapter.FlightViewHolder, position: Int) {
         val currentItem = flightList[position]
         holder.bind(currentItem)
     }
@@ -63,6 +62,4 @@ class ServicesFlightAdapter @Inject constructor() : RecyclerView.Adapter<Service
     override fun getItemCount(): Int {
         return flightList.size
     }
-
-
 }

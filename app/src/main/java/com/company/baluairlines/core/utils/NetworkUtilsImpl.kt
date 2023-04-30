@@ -40,6 +40,10 @@ class NetworkUtilsImpl @Inject constructor(val context: Context) :
         }
     }
 
+    /**
+     * метод возвращающий [LiveData] с статусом интернет соединения
+     * @return присутствует ли соединение обернутое в [LiveData]
+     */
     override fun getNetworkLiveData(): LiveData<Boolean> {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             connectivityManager.registerDefaultNetworkCallback(this)
@@ -52,10 +56,16 @@ class NetworkUtilsImpl @Inject constructor(val context: Context) :
         return networkLiveData
     }
 
+    /**
+     * коллбэк вызывающийся при появлении соединения с интернетом и обновляет актуальное состояние подключения
+     */
     override fun onAvailable(network: Network) {
         networkLiveData.postValue(true)
     }
 
+    /**
+     * коллбэк вызывающийся при отсутствии соединения с интернетом и обновляет актуальное состояние подключения
+     */
     override fun onLost(network: Network) {
         networkLiveData.postValue(false)
     }

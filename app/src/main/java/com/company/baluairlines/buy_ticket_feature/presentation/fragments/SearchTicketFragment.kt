@@ -2,10 +2,12 @@ package com.company.baluairlines.buy_ticket_feature.presentation.fragments
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentSearchTicketsBinding
 import com.google.android.material.button.MaterialButton
@@ -26,13 +28,9 @@ class SearchTicketFragment : Fragment(), MenuProvider {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentSearchTicketsBinding.inflate(inflater, container, false)
-        setSwapButtonListener()
-        setupPassengerListener()
-        setupDateListener()
+        setupListeners()
         updatePassengersUICounter()
         updateDateField(dateLongToString(Calendar.getInstance().timeInMillis), "")
-        setupCloseIconListener()
-        setupClassButtonListener()
         return binding.root
     }
 
@@ -50,6 +48,40 @@ class SearchTicketFragment : Fragment(), MenuProvider {
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {}
 
     override fun onMenuItemSelected(menuItem: MenuItem) = true
+
+    private fun setupListeners() {
+        setSwapButtonListener()
+        setupPassengerListener()
+        setupDateListener()
+        setupCloseIconListener()
+        setupClassButtonListener()
+        setupFindButtonListener()
+    }
+
+    private fun setupFindButtonListener() {
+        binding.findButton.setOnClickListener {
+            if (passengers.sum() <= 0){
+                Toast.makeText(requireContext(), "Укажите большее количество пассажиров", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val departureAirport = binding.departureEditText.text.toString()
+            val arrivalAirport = binding.arrivalEditText.text.toString()
+            val serviceClass = if(binding.businessButton.isChecked) "Business"  else "Economy"
+            if (departureAirport.isEmpty() || arrivalAirport.isEmpty()) {
+                Toast.makeText(requireContext(), "Введите аэропорт отправления и прибытия", Toast.LENGTH_SHORT).show()
+            } else {
+                val action = SearchTicketFragmentDirections.searchTicketFragmentToSearchResultFragment(
+                    //todo допилить обратную дату
+                        date = binding.departureDate.text.toString(),
+                        departureAirport = departureAirport,
+                        arrivalAirport = arrivalAirport,
+                        serviceClass = serviceClass,
+                        passengers = passengers.sum(),
+                    )
+                findNavController().navigate(action)
+            }
+        }
+    }
 
     private fun setupPassengerListener() {
         binding.passenger.setOnClickListener {
@@ -108,13 +140,13 @@ class SearchTicketFragment : Fragment(), MenuProvider {
     }
 
     private fun updateDateField(departureDate: String, backDate: String) {
-        if (departureDate.isNotEmpty()){
+        if (departureDate.isNotEmpty()) {
             binding.departureDate.text = departureDate
         }
-        if (backDate.isEmpty()){
+        if (backDate.isEmpty()) {
             binding.backDate.text = resources.getString(R.string.back_hint)
             binding.backCalendarIcon.setImageResource(R.drawable.calendar_icon)
-        } else{
+        } else {
             binding.backDate.text = backDate
             binding.backCalendarIcon.setImageResource(R.drawable.close_icon)
         }
@@ -127,7 +159,7 @@ class SearchTicketFragment : Fragment(), MenuProvider {
     }
 
     private fun setupCloseIconListener() {
-        binding.backCalendarIcon.setOnClickListener{
+        binding.backCalendarIcon.setOnClickListener {
             binding.backDate.text = resources.getString(R.string.back_hint)
             binding.backCalendarIcon.setImageResource(R.drawable.calendar_icon)
         }
@@ -143,7 +175,7 @@ class SearchTicketFragment : Fragment(), MenuProvider {
         }
     }
 
-    private fun setupClassButtonListener(){
+    private fun setupClassButtonListener() {
         binding.economyButton.isChecked = true
         binding.economyButton.addOnCheckedChangeListener { button, isChecked ->
             toggleButton(button, isChecked)

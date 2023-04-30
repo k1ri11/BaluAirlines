@@ -1,0 +1,61 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary_dark"
+    android:orientation="vertical"
+    tools:context="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchResultFragment">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_search_tickets" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bottom_card"
+        android:orientation="vertical"
+        android:paddingVertical="16dp">
+
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:id="@+id/destination_flight_date"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/text_color_dark"-->
+        <!--            style="@style/TextAppearance.LargeBody"-->
+        <!--            android:text="@string/destination_flight_date"-->
+        <!--            tools:text="туда пн, 20 апреля"/>-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/airports"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/bold_text_color_dark"-->
+        <!--            style="@style/TextAppearance.Title"-->
+        <!--            android:text="@string/departure_arrival_airports"-->
+        <!--            tools:text="VVO-SVO" />-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/costs_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/flight_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:padding="16dp" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
