@@ -3,6 +3,7 @@ package com.company.baluairlines.core
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.company.baluairlines.buy_ticket_feature.data.BuyTicketRepository
+import com.company.baluairlines.buy_ticket_feature.presentation.viewmodels.FlightDetailsViewModel
 import com.company.baluairlines.buy_ticket_feature.presentation.viewmodels.SearchResultViewModel
 import com.company.baluairlines.services_feature.data.ServicesRepository
 import com.company.baluairlines.services_feature.presentation.viewmodels.StatusViewModel
@@ -31,6 +32,9 @@ class ViewModelFactory @Inject constructor(
         }
         if (modelClass.isAssignableFrom(SearchResultViewModel::class.java)) {
             return SearchResultViewModel(buyTicketRepository = buyTicketRepository) as T
+        }
+        if (modelClass.isAssignableFrom(FlightDetailsViewModel::class.java)) {
+            return FlightDetailsViewModel(buyTicketRepository = buyTicketRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

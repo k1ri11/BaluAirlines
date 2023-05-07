@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_primary_dark"
     android:orientation="vertical"
-    tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.BookingStatusFragment">
+    tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.SearchBookingFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView"

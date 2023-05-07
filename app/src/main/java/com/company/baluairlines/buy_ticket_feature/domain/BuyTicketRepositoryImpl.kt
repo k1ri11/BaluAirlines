@@ -6,10 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import com.company.baluairlines.buy_ticket_feature.data.BuyTicketRepository
 import com.company.baluairlines.core.data.AirApi
 import com.company.baluairlines.core.di.ApplicationScope
+import com.company.baluairlines.core.domain.BookingReq
 import com.company.baluairlines.core.domain.CostItem
 import com.company.baluairlines.core.domain.Flight
+import com.company.baluairlines.core.domain.TicketInfo
 import com.company.baluairlines.core.utils.NetworkUtils
 import com.company.baluairlines.core.utils.Resource
+import com.company.baluairlines.core.utils.handleBookingResponse
 import com.company.baluairlines.core.utils.handleFlightListNetworkResponse
 import com.company.myapplication.R
 import java.text.SimpleDateFormat
@@ -28,6 +31,9 @@ class BuyTicketRepositoryImpl @Inject constructor(
 
     private val _costs = MutableLiveData<Resource<List<CostItem>>>()
     override val costs: LiveData<Resource<List<CostItem>>> = _costs
+
+    private val _bookingStatus = MutableLiveData<Resource<BookingReq>>()
+    override val bookingStatus: LiveData<Resource<BookingReq>> = _bookingStatus
 
     private val DAY_DURATION = 86400000
 
@@ -82,6 +88,16 @@ class BuyTicketRepositoryImpl @Inject constructor(
             }
         } else {
             _costs.postValue(Resource.Error(context.resources.getString(R.string.no_internet_connection)))
+        }
+    }
+
+    override suspend fun sendPersonalInfo(ticketInfo: TicketInfo){
+        if (networkUtils.hasInternetConnection()) {
+            val response = api.sendPersonalInfo(ticketInfo)
+            val result = handleBookingResponse(response, context)
+            _bookingStatus.postValue(result)
+        } else{
+            _bookingStatus.postValue(Resource.Error(context.resources.getString(R.string.no_internet_connection)))
         }
     }
 }

@@ -58,9 +58,9 @@
         </fragment>
         <fragment
             android:id="@+id/bookingStatusFragment"
-            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.BookingStatusFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.SearchBookingFragment"
             android:label="fragment_booking_status"
-            tools:layout="@layout/fragment_booking_status" >
+            tools:layout="@layout/fragment_search_booking" >
             <action
                 android:id="@+id/action_bookingStatusFragment_to_flightStatusListFragment"
                 app:destination="@id/flightStatusListFragment" />
@@ -116,6 +116,18 @@
         <argument
             android:name="passengers"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_flightDetailsFragment"
+            app:destination="@id/flightDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flightDetailsFragment"
+        android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.FlightDetailsFragment"
+        android:label="fragment_flight_details"
+        tools:layout="@layout/fragment_flight_details" >
+        <argument
+            android:name="flight"
+            app:argType="com.company.baluairlines.core.domain.Flight" />
     </fragment>
 
 

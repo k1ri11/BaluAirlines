@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background_secondary_dark">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/passenger_name_edit_text"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/divider_color_dark"
+        android:hint="@string/name_hint"
+        android:inputType="textNoSuggestions"
+        android:textColor="@color/bold_text_color_dark"
+        android:textColorHint="@color/text_color_dark" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/passenger_passport_edit_text"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/divider_color_dark"
+        android:hint="@string/passport_hint"
+        android:inputType="textNoSuggestions"
+        android:textColor="@color/bold_text_color_dark"
+        android:textColorHint="@color/text_color_dark" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/phone_edit_text"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/divider_color_dark"
+        android:hint="@string/phone_hint"
+        android:inputType="phone"
+        android:textColor="@color/bold_text_color_dark"
+        android:textColorHint="@color/text_color_dark" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/email_edit_text"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/divider_color_dark"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/bold_text_color_dark"
+        android:textColorHint="@color/text_color_dark" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/save_button"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/background_secondary_dark" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

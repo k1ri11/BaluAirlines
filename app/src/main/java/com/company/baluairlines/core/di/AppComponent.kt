@@ -1,6 +1,7 @@
 package com.company.baluairlines.core.di
 
 import android.content.Context
+import com.company.baluairlines.buy_ticket_feature.di.FlightDetailsComponent
 import com.company.baluairlines.buy_ticket_feature.di.SearchResultComponent
 import com.company.baluairlines.core.ViewModelFactory
 import com.company.baluairlines.core.data.AirApi
@@ -33,6 +34,8 @@ interface AppComponent {
 
     /** функция получения компонента для фичи поиска авиабилета */
     fun searchResultComponent(): SearchResultComponent.Factory
+
+    fun flightDetailsComponent() : FlightDetailsComponent.Factory
 
     /** фабрика компонента */
     @Component.Factory

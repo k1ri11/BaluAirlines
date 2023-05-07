@@ -2,10 +2,10 @@ package com.company.baluairlines.core.data
 
 import com.company.baluairlines.core.data.model.FlightInfoReq
 import com.company.baluairlines.core.data.model.FlightReq
+import com.company.baluairlines.core.domain.BookingReq
+import com.company.baluairlines.core.domain.TicketInfo
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /** интрфейс для сетевых запросов */
 interface AirApi {
@@ -83,5 +83,10 @@ interface AirApi {
         @Path("flight_number") flightNumber: String,
         @Query("departure_date") date: Long
     ): Response<FlightInfoReq>
+
+    @POST(" /bookings/")
+    suspend fun sendPersonalInfo(
+        @Body ticketInfo: TicketInfo
+    ): Response<BookingReq>
 
 }

@@ -16,6 +16,7 @@ fun FlightInfoReq.toFlightInfo(): FlightInfo {
     val scheduledDepartureDate = formatter.parse(scheduledDeparture)!!
 
     return FlightInfo(
+        flightId = flightId,
         flightNo = flightNo,
         scheduledArrival = scheduledArrivalDate,
         scheduledArrivalTime = formatterHours.format(scheduledArrivalDate),
@@ -33,15 +34,27 @@ fun FlightInfoReq.toFlightInfo(): FlightInfo {
 /** функция для маппинга из класса запроса (FlightReq) в класс для UI (Flight) */
 fun FlightReq.toFlight(): Flight {
     return Flight(
-        serviceClass = when (serviceClass) {
-            "Economy" -> ServiceClass.Economy
-//            "Comfort" -> ServiceClass.Comfort
-            "Business" -> ServiceClass.Business
-            else -> ServiceClass.Economy
-        },
+        serviceClass = serviceClass.toServiceClass(),
         passengers = passengers,
         cost = cost.toInt(),
         time = time,
         flights = flights.map { it.toFlightInfo() },
     )
+}
+
+fun ServiceClass.serviceToString(): String {
+    return when (this) {
+        ServiceClass.Economy -> "Economy"
+//            "Comfort" -> ServiceClass.Comfort
+        ServiceClass.Business -> "Business"
+    }
+}
+
+fun String.toServiceClass(): ServiceClass {
+    return when (this) {
+        "Economy" -> ServiceClass.Economy
+//            "Comfort" -> ServiceClass.Comfort
+        "Business" -> ServiceClass.Business
+        else -> ServiceClass.Economy
+    }
 }

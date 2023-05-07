@@ -5,6 +5,7 @@ import com.company.baluairlines.core.data.mappers.toFlight
 import com.company.baluairlines.core.data.mappers.toFlightInfo
 import com.company.baluairlines.core.data.model.FlightInfoReq
 import com.company.baluairlines.core.data.model.FlightReq
+import com.company.baluairlines.core.domain.BookingReq
 import com.company.baluairlines.core.domain.Flight
 import com.company.baluairlines.core.domain.FlightInfo
 import com.company.myapplication.R
@@ -61,6 +62,20 @@ fun handleFlightListNetworkResponse(response: Response<ArrayList<FlightReq>>, co
     if (response.isSuccessful) {
         response.body()?.let { body ->
             return Resource.Success(body.map { it.toFlight() })
+        }
+    }
+    return when (response.code()) {
+        400 -> Resource.Error(context.resources.getString(R.string.incorrect_request))
+        401 -> Resource.Error(context.resources.getString(R.string.incorrect_authorization))
+        404 -> Resource.Error(context.resources.getString(R.string.element_not_found))
+        else -> Resource.Error(context.resources.getString(R.string.server_error))
+    }
+}
+
+fun handleBookingResponse(response: Response<BookingReq>, context: Context): Resource<BookingReq> {
+    if (response.isSuccessful) {
+        response.body()?.let { body ->
+            return Resource.Success(body)
         }
     }
     return when (response.code()) {

@@ -16,6 +16,8 @@ import com.google.gson.annotations.SerializedName
  * @property actualDeparture фактическое время вылета
  */
 data class FlightInfoReq(
+    @SerializedName("flight_id")
+    val flightId: Int,
     @SerializedName("flight_no")
     val flightNo: String,
     @SerializedName("scheduled_arrival")

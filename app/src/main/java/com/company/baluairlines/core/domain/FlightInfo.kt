@@ -1,6 +1,8 @@
 package com.company.baluairlines.core.domain
 
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
 /**
@@ -17,7 +19,9 @@ import java.util.*
  * @property actualArrival фактическое время прилета
  * @property actualDeparture фактическое время вылета
  */
+@Parcelize
 data class FlightInfo(
+    val flightId: Int,
     val flightNo: String,
     val scheduledArrival: Date,
     val scheduledArrivalTime: String,
@@ -29,5 +33,5 @@ data class FlightInfo(
     val aircraftCode: String,
     val actualArrival: Date? = null,
     val actualDeparture: Date? = null,
-)
+) : Parcelable
 
