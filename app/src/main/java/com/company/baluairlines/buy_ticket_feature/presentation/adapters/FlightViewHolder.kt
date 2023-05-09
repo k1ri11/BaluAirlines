@@ -28,7 +28,6 @@ class FlightViewHolder(
             }
             departureTime.text = currentItem.flights.first().scheduledDepartureTime
             arrivalTime.text = currentItem.flights.last().scheduledArrivalTime
-            //todo проверить как приходит время
             flightTime.text = currentItem.time
             flightCost.text = currentItem.cost.toString()
         }

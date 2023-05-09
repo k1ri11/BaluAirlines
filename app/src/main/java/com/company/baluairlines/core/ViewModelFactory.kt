@@ -6,6 +6,7 @@ import com.company.baluairlines.buy_ticket_feature.data.BuyTicketRepository
 import com.company.baluairlines.buy_ticket_feature.presentation.viewmodels.FlightDetailsViewModel
 import com.company.baluairlines.buy_ticket_feature.presentation.viewmodels.SearchResultViewModel
 import com.company.baluairlines.services_feature.data.ServicesRepository
+import com.company.baluairlines.services_feature.presentation.viewmodels.BookingViewModel
 import com.company.baluairlines.services_feature.presentation.viewmodels.StatusViewModel
 import javax.inject.Inject
 
@@ -29,6 +30,9 @@ class ViewModelFactory @Inject constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(StatusViewModel::class.java)) {
             return StatusViewModel(servicesRepository = servicesRepository) as T
+        }
+        if (modelClass.isAssignableFrom(BookingViewModel::class.java)) {
+            return BookingViewModel(servicesRepository = servicesRepository) as T
         }
         if (modelClass.isAssignableFrom(SearchResultViewModel::class.java)) {
             return SearchResultViewModel(buyTicketRepository = buyTicketRepository) as T

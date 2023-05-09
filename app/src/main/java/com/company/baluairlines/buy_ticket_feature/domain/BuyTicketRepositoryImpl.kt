@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.company.baluairlines.buy_ticket_feature.data.BuyTicketRepository
 import com.company.baluairlines.core.data.AirApi
 import com.company.baluairlines.core.di.ApplicationScope
-import com.company.baluairlines.core.domain.BookingReq
+import com.company.baluairlines.core.domain.Booking
 import com.company.baluairlines.core.domain.CostItem
 import com.company.baluairlines.core.domain.Flight
 import com.company.baluairlines.core.domain.TicketInfo
@@ -32,13 +32,13 @@ class BuyTicketRepositoryImpl @Inject constructor(
     private val _costs = MutableLiveData<Resource<List<CostItem>>>()
     override val costs: LiveData<Resource<List<CostItem>>> = _costs
 
-    private val _bookingStatus = MutableLiveData<Resource<BookingReq>>()
-    override val bookingStatus: LiveData<Resource<BookingReq>> = _bookingStatus
+    private val _bookingStatus = MutableLiveData<Resource<Booking>>()
+    override val bookingStatus: LiveData<Resource<Booking>> = _bookingStatus
 
     private val DAY_DURATION = 86400000
 
-    private val costDateFormatter = SimpleDateFormat("E, dd MMM", Locale.ROOT)
-    private val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT)
+    private val costDateFormatter = SimpleDateFormat("E, dd MMM", Locale.getDefault())
+    private val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
     override suspend fun getFlights(
         date: Long, departureAirport: String, arrivalAirport: String, maxTransits: Int,
         serviceClass: String, passengers: Int
@@ -92,6 +92,7 @@ class BuyTicketRepositoryImpl @Inject constructor(
     }
 
     override suspend fun sendPersonalInfo(ticketInfo: TicketInfo){
+        _bookingStatus.postValue(Resource.Loading())
         if (networkUtils.hasInternetConnection()) {
             val response = api.sendPersonalInfo(ticketInfo)
             val result = handleBookingResponse(response, context)

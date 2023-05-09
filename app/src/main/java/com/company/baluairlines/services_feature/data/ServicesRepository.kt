@@ -1,6 +1,7 @@
 package com.company.baluairlines.services_feature.data
 
 import androidx.lifecycle.LiveData
+import com.company.baluairlines.core.domain.Booking
 import com.company.baluairlines.core.domain.FlightInfo
 import com.company.baluairlines.core.utils.Resource
 
@@ -11,6 +12,7 @@ import com.company.baluairlines.core.utils.Resource
 interface ServicesRepository {
 
     val flightStatus: LiveData<Resource<List<FlightInfo>>>
+    val bookingStatus: LiveData<Resource<Booking>>
 
     /**
      * запрос статуса рейса по померу и дате полета
@@ -33,4 +35,6 @@ interface ServicesRepository {
      * @param date дата полета
      */
     suspend fun getFlightTable(departureAirport: String, date: Long)
+
+    suspend fun getBooking(bookRef: String)
 }

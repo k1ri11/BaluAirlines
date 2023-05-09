@@ -28,7 +28,7 @@ class FlightDetailsAdapter @Inject constructor(
         private val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        private val formatter = SimpleDateFormat("HH:mm dd MMM, E", Locale.ROOT)
+        private val formatter = SimpleDateFormat("HH:mm dd MMM, E", Locale.getDefault())
 
         /**
          * функция заполнения элемента ресайклера

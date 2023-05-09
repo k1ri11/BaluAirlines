@@ -4,11 +4,9 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.company.baluairlines.core.data.AirApi
+import com.company.baluairlines.core.domain.Booking
 import com.company.baluairlines.core.domain.FlightInfo
-import com.company.baluairlines.core.utils.NetworkUtils
-import com.company.baluairlines.core.utils.Resource
-import com.company.baluairlines.core.utils.handleListNetworkResponse
-import com.company.baluairlines.core.utils.handleSingleNetworkResponse
+import com.company.baluairlines.core.utils.*
 import com.company.baluairlines.services_feature.data.ServicesRepository
 import com.company.myapplication.R
 import javax.inject.Inject
@@ -31,6 +29,9 @@ class ServicesRepositoryImpl @Inject constructor(
 
     private val _flightStatus = MutableLiveData<Resource<List<FlightInfo>>>()
     override val flightStatus: LiveData<Resource<List<FlightInfo>>> = _flightStatus
+
+    private val _bookingStatus = MutableLiveData<Resource<Booking>>()
+    override val bookingStatus: LiveData<Resource<Booking>> = _bookingStatus
 
     /**
      * запрос статуса рейса по померу и дате полета
@@ -89,4 +90,14 @@ class ServicesRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getBooking(bookRef: String) {
+        _bookingStatus.postValue(Resource.Loading())
+        if (networkUtils.hasInternetConnection()) {
+            val response = api.getBooking(bookRef)
+            val result = handleBookingResponse(response, context)
+            _bookingStatus.postValue(result)
+        } else {
+            _bookingStatus.postValue(Resource.Error(context.resources.getString(R.string.no_internet_connection)))
+        }
+    }
 }

@@ -5,7 +5,7 @@
         android:icon="@drawable/search_icon"
         android:title="@string/search" />
     <item
-        android:id="@+id/servicesNavigation"
+        android:id="@+id/servicesFragment"
         android:icon="@drawable/services_icon"
         android:title="@string/services" />
     <item

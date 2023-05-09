@@ -65,6 +65,7 @@
             android:textColorHint="@color/text_color_dark" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/search_button"
             style="@style/TextAppearance.LargeBody"
             android:layout_width="match_parent"
             android:layout_height="48dp"

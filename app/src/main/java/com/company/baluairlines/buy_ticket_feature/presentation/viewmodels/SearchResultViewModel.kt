@@ -24,37 +24,43 @@ class SearchResultViewModel(
     private val _uiState: MutableLiveData<FlightUIState> = MutableLiveData()
     val uiState: LiveData<FlightUIState> = _uiState
 
-    private val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT)
-
-    fun setUIState(state: FlightUIState){
+    fun setUIState(state: FlightUIState) {
         _uiState.value = state
     }
+
     fun getFlightCosts() = viewModelScope.launch(Dispatchers.IO) {
+        val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+        val currentState = uiState.value!!
+        val date = formatter.parse(currentState.date)!!.time
         buyTicketRepository.getFlightCosts(
-            formatter.parse(uiState.value!!.date)!!.time,
-            uiState.value!!.departureAirport,
-            uiState.value!!.arrivalAirport,
-            maxTransits = uiState.value!!.maxTransits,
-            serviceClass = uiState.value!!.serviceClass,
-            passengers = uiState.value!!.passengers
+            date,
+            currentState.departureAirport,
+            currentState.arrivalAirport,
+            maxTransits = currentState.maxTransits,
+            serviceClass = currentState.serviceClass,
+            passengers = currentState.passengers
         )
     }
 
 
     fun getFlights() = viewModelScope.launch(Dispatchers.IO) {
+        val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+        val currentState = uiState.value!!
+        val date = formatter.parse(currentState.date)!!.time
         buyTicketRepository.getFlights(
-            formatter.parse(uiState.value!!.date)!!.time,
-            uiState.value!!.departureAirport,
-            uiState.value!!.arrivalAirport,
-            maxTransits = uiState.value!!.maxTransits,
-            serviceClass = uiState.value!!.serviceClass,
-            passengers = uiState.value!!.passengers
+            date,
+            currentState.departureAirport,
+            currentState.arrivalAirport,
+            maxTransits = currentState.maxTransits,
+            serviceClass = currentState.serviceClass,
+            passengers = currentState.passengers
         )
     }
 
-    fun getFlights(date: String){
-        _uiState.value = _uiState.value!!.copy(date = date)
+    fun getFlights(date: String) {
+        _uiState.value = uiState.value!!.copy(date = date)
         getFlights()
+
     }
 
 }

@@ -1,11 +1,13 @@
 package com.company.baluairlines.core.utils
 
 import android.content.Context
+import com.company.baluairlines.core.data.mappers.toBooking
 import com.company.baluairlines.core.data.mappers.toFlight
 import com.company.baluairlines.core.data.mappers.toFlightInfo
+import com.company.baluairlines.core.data.model.BookingReq
 import com.company.baluairlines.core.data.model.FlightInfoReq
 import com.company.baluairlines.core.data.model.FlightReq
-import com.company.baluairlines.core.domain.BookingReq
+import com.company.baluairlines.core.domain.Booking
 import com.company.baluairlines.core.domain.Flight
 import com.company.baluairlines.core.domain.FlightInfo
 import com.company.myapplication.R
@@ -72,10 +74,10 @@ fun handleFlightListNetworkResponse(response: Response<ArrayList<FlightReq>>, co
     }
 }
 
-fun handleBookingResponse(response: Response<BookingReq>, context: Context): Resource<BookingReq> {
+fun handleBookingResponse(response: Response<BookingReq>, context: Context): Resource<Booking> {
     if (response.isSuccessful) {
         response.body()?.let { body ->
-            return Resource.Success(body)
+            return Resource.Success(body.toBooking())
         }
     }
     return when (response.code()) {

@@ -1,8 +1,8 @@
 package com.company.baluairlines.core.data
 
+import com.company.baluairlines.core.data.model.BookingReq
 import com.company.baluairlines.core.data.model.FlightInfoReq
 import com.company.baluairlines.core.data.model.FlightReq
-import com.company.baluairlines.core.domain.BookingReq
 import com.company.baluairlines.core.domain.TicketInfo
 import retrofit2.Response
 import retrofit2.http.*
@@ -87,6 +87,11 @@ interface AirApi {
     @POST(" /bookings/")
     suspend fun sendPersonalInfo(
         @Body ticketInfo: TicketInfo
+    ): Response<BookingReq>
+
+    @GET("/bookings/{book_ref}")
+    suspend fun getBooking(
+        @Path("book_ref") bookRef: String,
     ): Response<BookingReq>
 
 }

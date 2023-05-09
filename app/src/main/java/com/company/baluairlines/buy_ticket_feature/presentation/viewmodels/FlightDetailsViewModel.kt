@@ -14,7 +14,7 @@ class FlightDetailsViewModel(
     private val buyTicketRepository: BuyTicketRepository
 ) : ViewModel() {
 
-    val bookingStatus: LiveData<Resource<BookingReq>> = buyTicketRepository.bookingStatus
+    val bookingStatus: LiveData<Resource<Booking>> = buyTicketRepository.bookingStatus
 
     fun sendPersonalInformation(
         flightService: ServiceClass,

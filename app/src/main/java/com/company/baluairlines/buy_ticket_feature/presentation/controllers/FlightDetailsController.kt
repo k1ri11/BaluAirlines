@@ -6,11 +6,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.company.baluairlines.buy_ticket_feature.presentation.adapters.FlightDetailsAdapter
 import com.company.baluairlines.buy_ticket_feature.presentation.viewmodels.FlightDetailsViewModel
 import com.company.baluairlines.core.domain.Flight
 import com.company.baluairlines.core.utils.Resource
+import com.company.myapplication.NavGraphDirections
 import com.company.myapplication.databinding.DialogPersonalInformationBinding
 import com.company.myapplication.databinding.FragmentFlightDetailsBinding
 import javax.inject.Inject
@@ -74,13 +76,15 @@ class FlightDetailsController @Inject constructor(
     }
 
     private fun setupBookingStatusObserver() {
-        viewModel.bookingStatus.observe(viewLifecycleOwner){
-            when(it){
+        viewModel.bookingStatus.observe(viewLifecycleOwner){resourse ->
+            when(resourse){
                 is Resource.Loading -> {
                     showProgressBar()
                 }
                 is Resource.Success -> {
                     hideProgressBar()
+                    val action = NavGraphDirections.actionGlobalBookingDetailsFragment(resourse.data!!.bookRef)
+                    findNavController(fragment).navigate(action)
                 }
                 is Resource.Error -> {
                     hideProgressBar()

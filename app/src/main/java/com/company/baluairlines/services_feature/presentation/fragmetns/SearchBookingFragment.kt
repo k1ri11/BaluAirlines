@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentSearchBookingBinding
 
 class SearchBookingFragment : Fragment() {
@@ -21,6 +23,16 @@ class SearchBookingFragment : Fragment() {
 
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
+        }
+
+        binding.searchButton.setOnClickListener {
+            val bookingNumber = binding.bookingNumberEditText.text.toString()
+            if (bookingNumber.isNotEmpty()) {
+                val action = SearchBookingFragmentDirections.actionBookingStatusFragmentToBookingDetailsFragment(bookingNumber)
+                findNavController().navigate(action)
+            }
+            else{
+                Toast.makeText(requireContext(), resources.getString(R.string.booking_number_hint), Toast.LENGTH_SHORT).show()}
         }
 
         return binding.root

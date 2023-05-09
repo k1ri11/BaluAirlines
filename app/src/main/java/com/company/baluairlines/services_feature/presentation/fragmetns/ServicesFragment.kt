@@ -1,23 +1,14 @@
 package com.company.baluairlines.services_feature.presentation.fragmetns
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
-import com.company.baluairlines.core.MainActivity
-import com.company.baluairlines.core.utils.Resource
-import com.company.baluairlines.services_feature.domain.ServicesRepositoryImpl
-import com.company.baluairlines.services_feature.presentation.viewmodels.StatusViewModel
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentServicesBinding
-import kotlinx.coroutines.launch
-import java.util.*
 
 class ServicesFragment : Fragment(), MenuProvider {
 
