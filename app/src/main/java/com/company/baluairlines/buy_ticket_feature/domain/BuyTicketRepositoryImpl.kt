@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.company.baluairlines.buy_ticket_feature.data.BuyTicketRepository
 import com.company.baluairlines.core.data.AirApi
+import com.company.baluairlines.core.data.database.AirDao
+import com.company.baluairlines.core.data.mappers.toFlightInfoEntityList
+import com.company.baluairlines.core.data.mappers.toTicketEntityList
 import com.company.baluairlines.core.di.ApplicationScope
-import com.company.baluairlines.core.domain.Booking
-import com.company.baluairlines.core.domain.CostItem
-import com.company.baluairlines.core.domain.Flight
-import com.company.baluairlines.core.domain.TicketInfo
+import com.company.baluairlines.core.domain.*
 import com.company.baluairlines.core.utils.NetworkUtils
 import com.company.baluairlines.core.utils.Resource
 import com.company.baluairlines.core.utils.handleBookingResponse
@@ -21,6 +21,7 @@ import javax.inject.Inject
 
 @ApplicationScope
 class BuyTicketRepositoryImpl @Inject constructor(
+    private val dao: AirDao,
     private val api: AirApi,
     private val context: Context,
     private val networkUtils: NetworkUtils,
@@ -91,14 +92,19 @@ class BuyTicketRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun sendPersonalInfo(ticketInfo: TicketInfo){
+    override suspend fun sendPersonalInfo(ticketInfo: TicketInfo) {
         _bookingStatus.postValue(Resource.Loading())
         if (networkUtils.hasInternetConnection()) {
             val response = api.sendPersonalInfo(ticketInfo)
             val result = handleBookingResponse(response, context)
             _bookingStatus.postValue(result)
-        } else{
+        } else {
             _bookingStatus.postValue(Resource.Error(context.resources.getString(R.string.no_internet_connection)))
         }
+    }
+
+    override suspend fun saveBooking(booking: Booking, flightInfoList: List<FlightInfo>) {
+        dao.saveTickets(booking.toTicketEntityList())
+        dao.saveFlightsInfo(booking.toFlightInfoEntityList(flightInfoList))
     }
 }

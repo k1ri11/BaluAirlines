@@ -35,8 +35,6 @@ class BookingDetailsFragment : Fragment() {
         Toast.makeText(requireContext(), args.bookingNumber, Toast.LENGTH_SHORT).show()
 
         val appComponent = (activity as MainActivity).appComponent
-        //KZBCA4 бронирование
-        //YWHDH8
         val bookingViewModel: BookingViewModel by viewModels { appComponent.getViewModelFactory() }
         viewModel = bookingViewModel
         viewModel.getBooking(args.bookingNumber)
@@ -52,6 +50,7 @@ class BookingDetailsFragment : Fragment() {
             when (resourse) {
                 is Resource.Success -> {
                     hideProgressBar()
+                    binding.toolbar.title = "${resources.getString(R.string.booking)} ${resourse.data?.bookRef}"
                     updateUI(resourse.data!!)
                 }
                 is Resource.Error -> {

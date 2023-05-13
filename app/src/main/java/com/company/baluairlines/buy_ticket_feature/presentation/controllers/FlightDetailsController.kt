@@ -83,7 +83,8 @@ class FlightDetailsController @Inject constructor(
                 }
                 is Resource.Success -> {
                     hideProgressBar()
-                    val action = NavGraphDirections.actionGlobalBookingDetailsFragment(resourse.data!!.bookRef)
+                    viewModel.saveBooking(resourse.data!!, flightDetailsAdapter.flightInfoList)
+                    val action = NavGraphDirections.actionGlobalBookingDetailsFragment(resourse.data.bookRef)
                     findNavController(fragment).navigate(action)
                 }
                 is Resource.Error -> {

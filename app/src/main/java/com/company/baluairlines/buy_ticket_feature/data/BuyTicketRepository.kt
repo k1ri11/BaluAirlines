@@ -1,10 +1,7 @@
 package com.company.baluairlines.buy_ticket_feature.data
 
 import androidx.lifecycle.LiveData
-import com.company.baluairlines.core.domain.Booking
-import com.company.baluairlines.core.domain.CostItem
-import com.company.baluairlines.core.domain.Flight
-import com.company.baluairlines.core.domain.TicketInfo
+import com.company.baluairlines.core.domain.*
 import com.company.baluairlines.core.utils.Resource
 
 interface BuyTicketRepository {
@@ -23,4 +20,6 @@ interface BuyTicketRepository {
     )
 
     suspend fun sendPersonalInfo(ticketInfo: TicketInfo)
+
+    suspend fun saveBooking(booking: Booking, flightInfoList: List<FlightInfo>)
 }

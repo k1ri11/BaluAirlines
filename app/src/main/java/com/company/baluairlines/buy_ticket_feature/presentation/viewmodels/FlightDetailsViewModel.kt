@@ -39,4 +39,9 @@ class FlightDetailsViewModel(
         )
         buyTicketRepository.sendPersonalInfo(ticketInfo)
     }
+
+    fun saveBooking(booking: Booking, flightInfoList: List<FlightInfo>) = viewModelScope.launch(Dispatchers.IO) {
+        buyTicketRepository.saveBooking(booking, flightInfoList)
+    }
+
 }

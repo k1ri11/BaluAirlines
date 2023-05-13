@@ -1,10 +1,10 @@
 package com.company.baluairlines.core.data.mappers
 
-import com.company.baluairlines.core.data.model.BookingReq
 import com.company.baluairlines.core.data.model.FlightInfoReq
 import com.company.baluairlines.core.data.model.FlightReq
-import com.company.baluairlines.core.data.model.TicketReq
-import com.company.baluairlines.core.domain.*
+import com.company.baluairlines.core.domain.Flight
+import com.company.baluairlines.core.domain.FlightInfo
+import com.company.baluairlines.core.domain.ServiceClass
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,24 +57,4 @@ fun String.toServiceClass(): ServiceClass {
         "Business" -> ServiceClass.Business
         else -> ServiceClass.Economy
     }
-}
-
-fun BookingReq.toBooking(): Booking {
-    return Booking(
-        bookDate = bookDate,
-        bookRef = bookRef,
-        totalAmount = totalAmount,
-        tickets = tickets.map { it.toTicket() }
-    )
-}
-
-fun TicketReq.toTicket(): Ticket {
-    return Ticket(
-        bookRef = bookRef,
-        contactData = contactData,
-        flight = flight?.map { it.toFlightInfo() } ?: listOf(),
-        passengerId = passengerId,
-        passengerName = passengerName,
-        ticketNo = ticketNo
-    )
 }
