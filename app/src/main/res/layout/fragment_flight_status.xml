@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionName="shared_flight_info_container"
     android:background="@color/background_primary_dark"
     tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.FlighStatusFragment">
 
@@ -80,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_weight="0.5"
-                android:text="@string/route_button"
+                android:text="@string/route"
                 android:textAllCaps="false"
                 android:textColor="@color/bold_text_color_dark"
                 app:backgroundTint="@color/background_primary_dark"

@@ -71,7 +71,7 @@
             style="@style/TextAppearance.LargeBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VVO"
+            tools:text=""
             android:textColor="@color/text_color_dark"
             app:layout_constraintBottom_toBottomOf="@+id/departure_edit_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,10 +83,9 @@
             android:layout_height="40dp"
             android:background="@color/background_secondary_dark"
             android:src="@drawable/swap_vert"
-            app:layout_constraintBottom_toTopOf="@+id/arrival_airport"
+            app:layout_constraintBottom_toBottomOf="@+id/arrival_edit_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/departure_edit_text"
-            app:layout_constraintTop_toBottomOf="@+id/departure_airport"
+            app:layout_constraintTop_toTopOf="@+id/departure_edit_text"
             app:tint="@color/accent" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -98,7 +97,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/arrival_edit_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/arrival_edit_text"
-            tools:text="SVO" />
+            tools:text="" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

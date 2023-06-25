@@ -31,53 +31,66 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:padding="16dp"
         android:background="@drawable/rounded_full_card"
         android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/path_icon"
+            android:layout_width="30dp"
+            android:layout_height="0dp"
+            android:src="@drawable/plane"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/passengers"
             style="@style/TextAppearance.LargeBody"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:textColor="@color/bold_text_color_dark"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/path_icon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Пассажиров: 10" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/flight_number"
             style="@style/TextAppearance.BoldLargeBody"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:textColor="@color/bold_text_color_dark"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/path_icon"
             app:layout_constraintTop_toBottomOf="@+id/passengers"
             tools:text="SU 1701" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/departure_date"
             style="@style/TextAppearance.LargeBody"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:textColor="@color/bold_text_color_dark"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/path_icon"
             app:layout_constraintTop_toBottomOf="@+id/flight_number"
             tools:text="21:25 20 февр, пн" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/departure_airport"
             style="@style/TextAppearance.LargeBody"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
             android:textColor="@color/bold_text_color_dark"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/path_icon"
             app:layout_constraintTop_toBottomOf="@+id/departure_date"
             tools:text="DME" />
 
@@ -85,22 +98,24 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/arrival_date"
             style="@style/TextAppearance.LargeBody"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:textColor="@color/bold_text_color_dark"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/path_icon"
             app:layout_constraintTop_toBottomOf="@+id/departure_airport"
             tools:text="08:15 21 февр, вт" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/arrival_airport"
             style="@style/TextAppearance.LargeBody"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
             android:textColor="@color/bold_text_color_dark"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/path_icon"
             app:layout_constraintTop_toBottomOf="@+id/arrival_date"
             tools:text="LED" />
 

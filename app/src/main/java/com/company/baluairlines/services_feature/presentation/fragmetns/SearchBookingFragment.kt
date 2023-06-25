@@ -8,12 +8,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.company.myapplication.R
+import com.company.myapplication.ServicesGraphDirections
 import com.company.myapplication.databinding.FragmentSearchBookingBinding
+import com.google.android.material.transition.MaterialContainerTransform
 
 class SearchBookingFragment : Fragment() {
 
     private var _binding: FragmentSearchBookingBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = MaterialContainerTransform()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +35,7 @@ class SearchBookingFragment : Fragment() {
         binding.searchButton.setOnClickListener {
             val bookingNumber = binding.bookingNumberEditText.text.toString()
             if (bookingNumber.isNotEmpty()) {
-                val action = SearchBookingFragmentDirections.actionBookingStatusFragmentToBookingDetailsFragment(bookingNumber)
+                val action = ServicesGraphDirections.actionGlobalBookingDetailsFragment3(bookingNumber)
                 findNavController().navigate(action)
             }
             else{

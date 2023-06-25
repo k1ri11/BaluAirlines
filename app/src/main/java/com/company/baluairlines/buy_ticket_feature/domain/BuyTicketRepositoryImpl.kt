@@ -6,17 +6,22 @@ import androidx.lifecycle.MutableLiveData
 import com.company.baluairlines.buy_ticket_feature.data.BuyTicketRepository
 import com.company.baluairlines.core.data.AirApi
 import com.company.baluairlines.core.data.database.AirDao
+import com.company.baluairlines.core.data.database.Route
 import com.company.baluairlines.core.data.mappers.toFlightInfoEntityList
 import com.company.baluairlines.core.data.mappers.toTicketEntityList
 import com.company.baluairlines.core.di.ApplicationScope
-import com.company.baluairlines.core.domain.*
+import com.company.baluairlines.core.domain.Booking
+import com.company.baluairlines.core.domain.CostItem
+import com.company.baluairlines.core.domain.Flight
+import com.company.baluairlines.core.domain.FlightInfo
+import com.company.baluairlines.core.domain.TicketInfo
 import com.company.baluairlines.core.utils.NetworkUtils
 import com.company.baluairlines.core.utils.Resource
 import com.company.baluairlines.core.utils.handleBookingResponse
 import com.company.baluairlines.core.utils.handleFlightListNetworkResponse
 import com.company.myapplication.R
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 
 @ApplicationScope
@@ -72,9 +77,10 @@ class BuyTicketRepositoryImpl @Inject constructor(
                     val costs = body.mapIndexed() { index, cost ->
                         val currentDate = date + index * DAY_DURATION
                         CostItem(
-                            costDateFormatter.format(currentDate),
-                            formatter.format(currentDate),
-                            cost.toInt(), passengers.toString()
+                            date = costDateFormatter.format(currentDate),
+                            fullDate = formatter.format(currentDate),
+                            cost = cost?.toInt() ?: 0,
+                            passengers = passengers.toString()
                         )
                     }
                     _costs.postValue(Resource.Success(costs))
@@ -106,5 +112,9 @@ class BuyTicketRepositoryImpl @Inject constructor(
     override suspend fun saveBooking(booking: Booking, flightInfoList: List<FlightInfo>) {
         dao.saveTickets(booking.toTicketEntityList())
         dao.saveFlightsInfo(booking.toFlightInfoEntityList(flightInfoList))
+    }
+
+    override suspend fun saveRoute(route: Route) {
+        dao.saveRoute(route)
     }
 }

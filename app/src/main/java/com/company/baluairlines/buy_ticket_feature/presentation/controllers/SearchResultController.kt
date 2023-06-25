@@ -2,6 +2,7 @@ package com.company.baluairlines.buy_ticket_feature.presentation.controllers
 
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,10 +10,12 @@ import com.company.baluairlines.buy_ticket_feature.di.SearchResultViewScope
 import com.company.baluairlines.buy_ticket_feature.presentation.adapters.CostsAdapter
 import com.company.baluairlines.buy_ticket_feature.presentation.adapters.FlightListAdapter
 import com.company.baluairlines.buy_ticket_feature.presentation.viewmodels.SearchResultViewModel
+import com.company.baluairlines.core.data.database.Route
 import com.company.baluairlines.core.domain.FlightUIState
 import com.company.baluairlines.core.utils.Resource
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentSearchResultBinding
+import com.google.android.material.button.MaterialButton
 import javax.inject.Inject
 
 @SearchResultViewScope
@@ -26,6 +29,7 @@ class SearchResultController @Inject constructor(
 ) {
 
     fun setupViews(state: FlightUIState) {
+        setupFavoriteIconListener(state)
         viewModel.setUIState(state)
         observeSearchResult()
         observeCostResult()
@@ -35,6 +39,37 @@ class SearchResultController @Inject constructor(
         viewModel.getFlights()
         val airports = fragment.resources.getString(R.string.departure_arrival_airports, state.departureAirport, state.arrivalAirport)
         binding.toolbar.airports.text = airports
+    }
+    private fun setupFavoriteIconListener(state: FlightUIState) {
+        val btn = binding.toolbar.favoriteIcon
+        if (btn.isChecked){
+            checkButton(btn)
+        } else{
+            uncheckButton(btn)
+        }
+        btn.addOnCheckedChangeListener { button, isChecked ->
+            if (isChecked){
+                checkButton(button)
+                viewModel.saveRoute(Route(
+                    departureAirport = state.departureAirport,
+                    arrivalAirport = state.arrivalAirport
+                ))
+                Toast.makeText(fragment.requireContext(),
+                    fragment.resources.getString(R.string.successful_save), Toast.LENGTH_SHORT).show()
+            } else {
+                uncheckButton(button)
+            }
+        }
+    }
+
+    private fun checkButton(button: MaterialButton) {
+        button.icon = ContextCompat.getDrawable(fragment.requireContext(), R.drawable.favorite_icon_enable)
+        button.setIconTintResource(R.color.accent)
+    }
+
+    private fun uncheckButton(button: MaterialButton){
+        button.icon = ContextCompat.getDrawable(fragment.requireContext(), R.drawable.favorite_icon_disable)
+        button.setIconTintResource(R.color.icon_tint_dark)
     }
 
     private fun observeUIState() {

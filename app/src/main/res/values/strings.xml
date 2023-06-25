@@ -7,12 +7,13 @@
     <string name="server_error">Неопознанная ошибка сервера</string>
     <string name="no_internet_connection">Нет интернет соединения</string>
     <string name="error">Ошибка: </string>
+    <string name="costs_not_found">Не найдено</string>
 
     <string name="departure_arrival_airports">%1$s - %2$s</string>
     <string name="flight_cost">от %1$d ₽</string>
     <string name="dep_arr_date_and_passengers">%1$s | пассажиров: %2$d</string>
     <string name="destination_flight_date">%1$s %2$ </string>
-    <string name="passengers_cost">за %1$s пассажиров</string>
+    <string name="passengers_cost">за пассажиров: %1$s </string>
 
     <string name="main">Главная</string>
     <string name="search">Поиск</string>
@@ -28,6 +29,8 @@
     <string name="arrival">Прибытие</string>
     <string name="passenger_quantity">Количество пассажиров</string>
     <string name="passenger_quantity_number">Количество пассажиров: %1$d</string>
+    <string name="booking_owner_name">забранировано на: %1$s</string>
+    <string name="successful_save">Маршрут успешно сохранен в избранное</string>
 
     <!--    hints       -->
     <string name="departure_hint">Откуда (обязательно)</string>
@@ -47,7 +50,7 @@
     <string name="search_button">Найти</string>
     <string name="search_booking_button">Найти бронирование</string>
     <string name="flight_number_button">Номер рейса</string>
-    <string name="route_button">Маршрут</string>
+    <string name="route">Маршрут</string>
     <string name="economy">Эконом</string>
     <string name="business">Бизнес</string>
     <string name="adult">Взрослые</string>
@@ -58,4 +61,6 @@
     <string name="baby_passenger_description">до 2 лет, без места \n на руках у взрослого</string>
     <string name="save">Сохранить</string>
     <string name="buy">Купить</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

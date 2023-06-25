@@ -8,11 +8,20 @@ interface AirDao {
     @Query("SELECT * FROM tickets")
     fun getTicketsWithFlights(): List<TicketsWithFlights>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveTickets(tasks: List<TicketEntity>)
+    @Query("SELECT * FROM routes")
+    fun getRoutes(): List<Route>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveFlightsInfo(tasks: List<FlightInfoEntity>)
+    suspend fun saveTickets(tickets: List<TicketEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveFlightsInfo(flights: List<FlightInfoEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveRoute(route: Route)
+
+    @Query("DELETE FROM routes")
+    fun clearRoutes()
 
     @Query("DELETE FROM tickets")
     fun clearTicketTable()

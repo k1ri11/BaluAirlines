@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(
-    entities = [TicketEntity::class, FlightInfoEntity::class],
+    entities = [TicketEntity::class, FlightInfoEntity::class, Route::class],
     version = 1
 )
 @TypeConverters(Converters::class)

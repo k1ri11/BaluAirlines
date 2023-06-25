@@ -12,7 +12,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
-        android:src="@drawable/takeoff_icon"
+        android:src="@drawable/plane_take_off"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/accent" />
@@ -23,7 +23,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="32dp"
-        android:src="@drawable/landing_icon"
+        android:src="@drawable/plane_landing"
         app:layout_constraintEnd_toStartOf="@+id/flight_cost"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/accent" />

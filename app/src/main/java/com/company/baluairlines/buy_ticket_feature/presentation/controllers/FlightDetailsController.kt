@@ -12,7 +12,7 @@ import com.company.baluairlines.buy_ticket_feature.presentation.adapters.FlightD
 import com.company.baluairlines.buy_ticket_feature.presentation.viewmodels.FlightDetailsViewModel
 import com.company.baluairlines.core.domain.Flight
 import com.company.baluairlines.core.utils.Resource
-import com.company.myapplication.NavGraphDirections
+import com.company.myapplication.SearchTicketNavGraphDirections
 import com.company.myapplication.databinding.DialogPersonalInformationBinding
 import com.company.myapplication.databinding.FragmentFlightDetailsBinding
 import javax.inject.Inject
@@ -84,7 +84,7 @@ class FlightDetailsController @Inject constructor(
                 is Resource.Success -> {
                     hideProgressBar()
                     viewModel.saveBooking(resourse.data!!, flightDetailsAdapter.flightInfoList)
-                    val action = NavGraphDirections.actionGlobalBookingDetailsFragment(resourse.data.bookRef)
+                    val action = SearchTicketNavGraphDirections.actionGlobalBookingDetailsFragment2(resourse.data.bookRef)
                     findNavController(fragment).navigate(action)
                 }
                 is Resource.Error -> {

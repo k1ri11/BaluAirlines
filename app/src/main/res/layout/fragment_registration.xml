@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_primary_dark"
     android:orientation="vertical"
+    android:transitionName="shared_flight_registration_container"
     tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.RegistrationFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -59,9 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:backgroundTint="@color/divider_color_dark"
+            android:ellipsize="end"
             android:hint="@string/surname_hint"
             android:inputType="text"
-            android:ellipsize="end"
             android:textColor="@color/bold_text_color_dark"
             android:textColorHint="@color/text_color_dark" />
 
@@ -81,8 +82,8 @@
             style="@style/TextAppearance.LargeBody"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/rounded_button"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_button"
             android:text="@string/search_booking_button"
             android:textAllCaps="false"
             android:textColor="@color/background_secondary_dark" />

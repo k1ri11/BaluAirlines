@@ -16,7 +16,7 @@ import com.company.baluairlines.services_feature.presentation.viewmodels.Booking
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentBookingDetailsBinding
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 class BookingDetailsFragment : Fragment() {
 
@@ -76,7 +76,7 @@ class BookingDetailsFragment : Fragment() {
         binding.arrivalAirport.text = flightInfo.arrivalAirport
         binding.departureAirport.text = flightInfo.departureAirport
         binding.flightNumber.text = flightInfo.flightNo
-        binding.passengers.text = booking.tickets.size.toString()
+        binding.passengers.text = resources.getString(R.string.passenger_quantity_number, booking.tickets.size)
         val arrivalDate = formatter.format(flightInfo.scheduledArrival)
         binding.arrivalDate.text = arrivalDate
         val departureDate = formatter.format(flightInfo.scheduledDeparture)

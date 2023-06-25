@@ -1,7 +1,12 @@
 package com.company.baluairlines.buy_ticket_feature.presentation.fragments
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -12,8 +17,10 @@ import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentSearchTicketsBinding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.MaterialDatePicker.Builder.dateRangePicker
+import com.google.android.material.transition.MaterialFadeThrough
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 
 class SearchTicketFragment : Fragment(), MenuProvider {
@@ -23,6 +30,10 @@ class SearchTicketFragment : Fragment(), MenuProvider {
 
     private var passengers = intArrayOf(1, 0)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        exitTransition = MaterialFadeThrough()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -88,11 +99,10 @@ class SearchTicketFragment : Fragment(), MenuProvider {
 
             val bottomSheetDialog = PassengerBottomSheet()
             bottomSheetDialog.setPassengers(passengers)
-            bottomSheetDialog.showNow(childFragmentManager, "bottomSheetDialog")
+            bottomSheetDialog.showNow(parentFragmentManager, "bottomSheetDialog")
             bottomSheetDialog.dialog?.setOnDismissListener {
                 passengers = bottomSheetDialog.getTotalPassengers()
                 updatePassengersUICounter()
-                //баг с появлением фрагментов при переходе на другой экран и возврате обратно
             }
         }
     }

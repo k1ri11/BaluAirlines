@@ -1,0 +1,81 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:background="@drawable/rounded_full_card"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/booking_number"
+        style="@style/TextAppearance.BoldLargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bold_text_color_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Qvbsw3"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/booking_owner"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bold_text_color_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/booking_number"
+        tools:text="Забронировано на: абобуса"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/departure_date"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/bold_text_color_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/booking_owner"
+        tools:text="21:25 20 февр, пн" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/departure_airport"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/bold_text_color_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/departure_date"
+        tools:text="DME" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/arrival_date"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/bold_text_color_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/departure_airport"
+        tools:text="08:15 21 февр, вт" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/arrival_airport"
+        style="@style/TextAppearance.LargeBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/bold_text_color_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arrival_date"
+        tools:text="LED" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

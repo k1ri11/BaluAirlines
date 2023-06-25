@@ -14,6 +14,7 @@ import com.company.baluairlines.buy_ticket_feature.presentation.viewmodels.Searc
 import com.company.baluairlines.core.MainActivity
 import com.company.baluairlines.core.domain.FlightUIState
 import com.company.myapplication.databinding.FragmentSearchResultBinding
+import com.google.android.material.transition.MaterialFadeThrough
 
 class SearchResultFragment : Fragment() {
 
@@ -28,6 +29,7 @@ class SearchResultFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough()
         val appComponent = (activity as MainActivity).appComponent
         val viewModel: SearchResultViewModel by viewModels { appComponent.getViewModelFactory() }
         searchResultComponent = appComponent.searchResultComponent().create(this, viewModel)

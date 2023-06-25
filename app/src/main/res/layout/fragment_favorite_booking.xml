@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.company.baluairlines.favorite_feature.presentation.fragments.FavoriteBookingFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingHorizontal="16dp"
+        android:id="@+id/booking_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>

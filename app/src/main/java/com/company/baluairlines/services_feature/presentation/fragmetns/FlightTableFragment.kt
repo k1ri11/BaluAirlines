@@ -9,8 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.company.myapplication.databinding.FragmentFlightTableBinding
+import com.google.android.material.transition.MaterialContainerTransform
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class FlightTableFragment : Fragment() {
 
@@ -18,6 +21,11 @@ class FlightTableFragment : Fragment() {
     private var _binding: FragmentFlightTableBinding? = null
     private val binding get() = _binding!!
     private val calendar = Calendar.getInstance()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = MaterialContainerTransform()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,6 +68,7 @@ class FlightTableFragment : Fragment() {
                 binding.dateEditText.setText(dateToString(calendar.time))
             }
         binding.dateEditText.setOnClickListener {
+
             DatePickerDialog(
                 requireContext(), dateSetListener,
                 calendar.get(Calendar.YEAR),

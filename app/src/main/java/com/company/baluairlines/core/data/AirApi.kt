@@ -27,7 +27,7 @@ interface AirApi {
         @Query("max_transits") maxTransits: Int,
         @Query("fare_condition") fareCondition: String,
         @Query("num_of_passengers") passengers: Int,
-    ): Response<ArrayList<Double>>
+    ): Response<ArrayList<Double?>>
 
     /** функция запроса полетов по параметрам
      * @param date дата полета
@@ -38,7 +38,7 @@ interface AirApi {
      * @param passengers количество пассажиров
      * @return массив из полетов
      * */
-    @GET("/flights/?")
+    @GET("/flights/?&date_between=true")
     suspend fun getFlights(
         @Query("departure_date") date: Long,
         @Query("departure_airport") departureAirport: String,

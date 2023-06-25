@@ -11,8 +11,11 @@ import androidx.navigation.fragment.findNavController
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentFlightStatusBinding
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.transition.MaterialContainerTransform
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class FlighStatusFragment : Fragment() {
 
@@ -20,6 +23,10 @@ class FlighStatusFragment : Fragment() {
     private val binding get() = _binding!!
     private val calendar = Calendar.getInstance()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = MaterialContainerTransform()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

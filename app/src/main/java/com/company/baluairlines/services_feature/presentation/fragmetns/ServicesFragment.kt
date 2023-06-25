@@ -1,19 +1,34 @@
 package com.company.baluairlines.services_feature.presentation.fragmetns
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentServicesBinding
+import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialFadeThrough
 
 class ServicesFragment : Fragment(), MenuProvider {
 
     private var _binding: FragmentServicesBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough()
+        exitTransition = MaterialElevationScale( false)
+        reenterTransition = MaterialElevationScale( true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,16 +44,20 @@ class ServicesFragment : Fragment(), MenuProvider {
     private fun setupNavigation() {
         binding.apply {
             flightTableContainer.setOnClickListener {
-                findNavController().navigate(R.id.action_servicesFragment_to_flightTableFragment)
+                val extras = FragmentNavigatorExtras(flightTableContainer to "shared_flight_table_container")
+                findNavController().navigate(R.id.action_servicesFragment_to_flightTableFragment, null, null, extras)
             }
             registrationContainer.setOnClickListener {
-                findNavController().navigate(R.id.action_servicesFragment_to_registrationFragment)
+                val extras = FragmentNavigatorExtras(registrationContainer to "shared_flight_registration_container")
+                findNavController().navigate(R.id.action_servicesFragment_to_registrationFragment, null,null,extras)
             }
             bookingStatusContainer.setOnClickListener {
-                findNavController().navigate(R.id.action_servicesFragment_to_bookingStatusFragment)
+                val extras = FragmentNavigatorExtras(bookingStatusContainer to "shared_booking_status_container")
+                findNavController().navigate(R.id.action_servicesFragment_to_bookingStatusFragment, null,null,extras)
             }
             flightStatusContainer.setOnClickListener {
-                findNavController().navigate(R.id.action_servicesFragment_to_flightStatusFragment)
+                val extras = FragmentNavigatorExtras(flightStatusContainer to "shared_flight_info_container")
+                findNavController().navigate(R.id.action_servicesFragment_to_flightStatusFragment, null,null,extras)
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.company.baluairlines.buy_ticket_feature.data.BuyTicketRepository
+import com.company.baluairlines.core.data.database.Route
 import com.company.baluairlines.core.domain.CostItem
 import com.company.baluairlines.core.domain.Flight
 import com.company.baluairlines.core.domain.FlightUIState
@@ -12,7 +13,7 @@ import com.company.baluairlines.core.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 class SearchResultViewModel(
     private val buyTicketRepository: BuyTicketRepository
@@ -61,6 +62,10 @@ class SearchResultViewModel(
         _uiState.value = uiState.value!!.copy(date = date)
         getFlights()
 
+    }
+
+    fun saveRoute(route: Route) = viewModelScope.launch(Dispatchers.IO){
+        buyTicketRepository.saveRoute(route)
     }
 
 }

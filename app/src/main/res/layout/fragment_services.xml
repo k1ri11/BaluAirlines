@@ -30,12 +30,16 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/flight_table_container"
+            android:transitionName="shared_flight_table_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/flight_table_image_button"
+                android:src="@drawable/flight_table_icon"
                 android:layout_width="40dp"
+                android:background="@drawable/full_rounded_with_borders"
+                android:tint="@color/accent"
                 android:layout_height="40dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -59,11 +63,15 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/registration_container"
             android:layout_width="match_parent"
+            android:transitionName="shared_flight_registration_container"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/registration_image_button"
                 android:layout_width="40dp"
+                android:src="@drawable/plane_take_off"
+                android:tint="@color/accent"
+                android:background="@drawable/full_rounded_with_borders"
                 android:layout_height="40dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -86,12 +94,16 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/booking_status_container"
+            android:transitionName="shared_booking_status_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/booking_status_image_button"
                 android:layout_width="40dp"
+                android:tint="@color/accent"
+                android:src="@drawable/ticket_double"
+                android:background="@drawable/full_rounded_with_borders"
                 android:layout_height="40dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -115,11 +127,15 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/flight_status_container"
             android:layout_width="match_parent"
+            android:transitionName="shared_flight_info_container"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/flight_status_image_button"
                 android:layout_width="40dp"
+                android:tint="@color/accent"
+                android:src="@drawable/flight_info"
+                android:background="@drawable/full_rounded_with_borders"
                 android:layout_height="40dp" />
 
             <androidx.appcompat.widget.AppCompatTextView

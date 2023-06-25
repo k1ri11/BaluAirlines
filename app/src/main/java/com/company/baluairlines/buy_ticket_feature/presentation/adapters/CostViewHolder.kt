@@ -23,7 +23,8 @@ class CostViewHolder(
         binding.apply {
             binding.root.setOnClickListener { viewModel.getFlights(currentItem.fullDate) }
             flightDate.text = currentItem.date
-            flightCost.text = context.getString(R.string.flight_cost, currentItem.cost)
+            if (currentItem.cost == 0) flightCost.text = context.getString(R.string.costs_not_found)
+            else flightCost.text = context.getString(R.string.flight_cost, currentItem.cost)
             passengers.text = context.getString(R.string.passengers_cost, currentItem.passengers)
         }
     }

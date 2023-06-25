@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionName="shared_booking_status_container"
     android:background="@color/background_primary_dark"
     android:orientation="vertical"
     tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.SearchBookingFragment">

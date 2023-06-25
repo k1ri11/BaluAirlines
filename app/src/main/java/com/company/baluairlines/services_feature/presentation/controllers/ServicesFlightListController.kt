@@ -13,7 +13,7 @@ import com.company.baluairlines.services_feature.presentation.viewmodels.StatusV
 import com.company.myapplication.R
 import com.company.myapplication.databinding.FragmentServicesFlightListBinding
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 
 @ServicesFlightViewScope
@@ -48,6 +48,7 @@ class ServicesFlightListController @Inject constructor(
 
     private fun setupAirports(item: FlightInfo) {
         binding.departureAirport.text = item.departureAirport
+        binding.arrivalAirport.text = item.arrivalAirport
         binding.date.text = formatter.format(item.scheduledDeparture)
     }
 

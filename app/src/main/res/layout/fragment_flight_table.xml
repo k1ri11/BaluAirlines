@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionName="shared_flight_table_container"
     android:background="@color/background_primary_dark"
     tools:context="com.company.baluairlines.services_feature.presentation.fragmetns.FlightTableFragment">
 

@@ -3,40 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/searchTicketFragment">
+    app:startDestination="@id/search_ticket_nav_graph">
     <fragment
-        android:id="@+id/searchTicketFragment"
-        android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchTicketFragment"
-        android:label="fragment_search_tickets"
-        tools:layout="@layout/fragment_search_tickets">
-        <action
-            android:id="@+id/searchTicketFragment_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
+        android:id="@+id/bookingDetailsFragment"
+        android:name="com.company.baluairlines.services_feature.presentation.fragmetns.BookingDetailsFragment"
+        android:label="fragment_booking_details"
+        tools:layout="@layout/fragment_booking_details">
+        <argument
+            android:name="booking_number"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.company.baluairlines.favorite_feature.presentation.FavoriteFragment"
+        android:name="com.company.baluairlines.favorite_feature.presentation.fragments.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
 
+    <navigation android:id="@+id/search_ticket_nav_graph"
+        app:startDestination="@id/searchTicketFragment">
         <fragment
-            android:id="@+id/servicesFragment"
-            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.ServicesFragment"
-            android:label="fragment_services"
-            tools:layout="@layout/fragment_services">
-            <action
-                android:id="@+id/action_servicesFragment_to_flightStatusFragment"
-                app:destination="@id/flightStatusFragment" />
-            <action
-                android:id="@+id/action_servicesFragment_to_flightTableFragment"
-                app:destination="@id/flightTableFragment" />
-            <action
-                android:id="@+id/action_servicesFragment_to_registrationFragment"
-                app:destination="@id/registrationFragment" />
-            <action
-                android:id="@+id/action_servicesFragment_to_bookingStatusFragment"
-                app:destination="@id/bookingStatusFragment" />
+            android:id="@+id/flightDetailsFragment"
+            android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.FlightDetailsFragment"
+            android:label="fragment_flight_details"
+            tools:layout="@layout/fragment_flight_details">
+            <argument
+                android:name="flight"
+                app:argType="com.company.baluairlines.core.domain.Flight" />
         </fragment>
+        <fragment
+            android:id="@+id/searchResultFragment"
+            android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchResultFragment"
+            android:label="fragment_search_result"
+            tools:layout="@layout/fragment_search_result">
+            <argument
+                android:name="date"
+                app:argType="string" />
+            <argument
+                android:name="departureAirport"
+                app:argType="string" />
+            <argument
+                android:name="arrivalAirport"
+                app:argType="string" />
+            <argument
+                android:name="serviceClass"
+                android:defaultValue="Economy"
+                app:argType="string" />
+            <argument
+                android:name="passengers"
+                app:argType="integer" />
+            <action
+                android:id="@+id/action_searchResultFragment_to_flightDetailsFragment"
+                app:destination="@id/flightDetailsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/searchTicketFragment"
+            android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchTicketFragment"
+            android:label="fragment_search_tickets"
+            tools:layout="@layout/fragment_search_tickets">
+            <action
+                android:id="@+id/searchTicketFragment_to_searchResultFragment"
+                app:destination="@id/searchResultFragment" />
+            <action
+                android:id="@+id/action_searchTicketFragment_to_passengerBottomSheet"
+                app:destination="@id/passengerBottomSheet"
+                app:popUpTo="@id/passengerBottomSheet" />
+        </fragment>
+        <dialog
+            android:id="@+id/passengerBottomSheet"
+            android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.PassengerBottomSheet"
+            android:label="PassengerBottomSheet" >
+            <argument
+                android:name="passengers"
+                app:argType="integer[]" />
+        </dialog>
+        <action
+            android:id="@+id/action_global_bookingDetailsFragment2"
+            app:destination="@id/bookingDetailsFragment"
+            app:popUpTo="@id/search_ticket_nav_graph" />
+    </navigation>
+    <navigation android:id="@+id/services_graph"
+        app:startDestination="@id/servicesFragment">
         <fragment
             android:id="@+id/flightStatusFragment"
             android:name="com.company.baluairlines.services_feature.presentation.fragmetns.FlighStatusFragment"
@@ -47,28 +93,10 @@
                 app:destination="@id/flightStatusListFragment" />
         </fragment>
         <fragment
-            android:id="@+id/flightTableFragment"
-            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.FlightTableFragment"
-            android:label="fragment_flight_table"
-            tools:layout="@layout/fragment_flight_table">
-            <action
-                android:id="@+id/flightTableFr_to_flightStatusListFr"
-                app:destination="@id/flightStatusListFragment" />
-        </fragment>
-        <fragment
             android:id="@+id/bookingStatusFragment"
             android:name="com.company.baluairlines.services_feature.presentation.fragmetns.SearchBookingFragment"
             android:label="fragment_booking_status"
-            tools:layout="@layout/fragment_search_booking">
-            <action
-                android:id="@+id/action_bookingStatusFragment_to_bookingDetailsFragment"
-                app:destination="@id/bookingDetailsFragment" />
-        </fragment>
-        <fragment
-            android:id="@+id/registrationFragment"
-            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.RegistrationFragment"
-            android:label="fragment_registration"
-            tools:layout="@layout/fragment_registration" />
+            tools:layout="@layout/fragment_search_booking"/>
         <fragment
             android:id="@+id/flightStatusListFragment"
             android:name="com.company.baluairlines.services_feature.presentation.fragmetns.ServicesFlightListFragment"
@@ -96,53 +124,41 @@
                 app:argType="string" />
         </fragment>
         <fragment
-            android:id="@+id/bookingDetailsFragment"
-            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.BookingDetailsFragment"
-            android:label="fragment_booking_details"
-            tools:layout="@layout/fragment_booking_details">
-            <argument
-                android:name="booking_number"
-                app:argType="string" />
+            android:id="@+id/servicesFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.ServicesFragment"
+            android:label="fragment_services"
+            tools:layout="@layout/fragment_services">
+            <action
+                android:id="@+id/action_servicesFragment_to_flightStatusFragment"
+                app:destination="@id/flightStatusFragment" />
+            <action
+                android:id="@+id/action_servicesFragment_to_flightTableFragment"
+                app:destination="@id/flightTableFragment" />
+            <action
+                android:id="@+id/action_servicesFragment_to_registrationFragment"
+                app:destination="@id/registrationFragment" />
+            <action
+                android:id="@+id/action_servicesFragment_to_bookingStatusFragment"
+                app:destination="@id/bookingStatusFragment" />
         </fragment>
+        <fragment
+            android:id="@+id/flightTableFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.FlightTableFragment"
+            android:label="fragment_flight_table"
+            tools:layout="@layout/fragment_flight_table">
+            <action
+                android:id="@+id/flightTableFr_to_flightStatusListFr"
+                app:destination="@id/flightStatusListFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/registrationFragment"
+            android:name="com.company.baluairlines.services_feature.presentation.fragmetns.RegistrationFragment"
+            android:label="fragment_registration"
+            tools:layout="@layout/fragment_registration" />
         <action
-            android:id="@+id/action_global_bookingDetailsFragment"
-            app:destination="@id/bookingDetailsFragment">
-            <argument android:name="booking_number" app:argType="string" />
-        </action>
-    <fragment
-        android:id="@+id/searchResultFragment"
-        android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.SearchResultFragment"
-        android:label="fragment_search_result"
-        tools:layout="@layout/fragment_search_result">
-        <argument
-            android:name="date"
-            app:argType="string" />
-        <argument
-            android:name="departureAirport"
-            app:argType="string" />
-        <argument
-            android:name="arrivalAirport"
-            app:argType="string" />
-        <argument
-            android:name="serviceClass"
-            android:defaultValue="Economy"
-            app:argType="string" />
-        <argument
-            android:name="passengers"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_searchResultFragment_to_flightDetailsFragment"
-            app:destination="@id/flightDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/flightDetailsFragment"
-        android:name="com.company.baluairlines.buy_ticket_feature.presentation.fragments.FlightDetailsFragment"
-        android:label="fragment_flight_details"
-        tools:layout="@layout/fragment_flight_details">
-        <argument
-            android:name="flight"
-            app:argType="com.company.baluairlines.core.domain.Flight" />
-    </fragment>
+            android:id="@+id/action_global_bookingDetailsFragment3"
+            app:destination="@id/bookingDetailsFragment" />
+    </navigation>
 
 
 </navigation>
